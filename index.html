@@ -201,7 +201,13 @@ details.weights summary::before{content:"⚙ ";color:var(--gold)}
 </div>
 
 <div class="bz-card" id="myShortlist" style="border:2px solid var(--gold);background:linear-gradient(135deg,rgba(184,137,58,.06),transparent)">
-<h3 style="margin-top:0">★ 我的候选 <span class="sans" style="color:var(--mute);font-weight:400;font-size:.82em">（收藏的名字与首推一同进入决选）</span></h3>
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+<h3 style="margin:0">★ 全家投票 / 我的候选</h3>
+<div class="sans" style="font-size:.82em;color:var(--mute)">
+<span id="syncStatus">☁ 待同步</span> ·
+<a href="javascript:promptNickname()" style="color:var(--accent);text-decoration:none">👤 <span id="nickDisplay">未设置昵称</span></a>
+</div>
+</div>
 <div id="shortlistBox" class="sans" style="font-size:.92em;color:var(--mute)">尚未收藏。点击任意名字右侧的 ★ 加入候选。</div>
 <details style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px" id="customAdd">
 <summary class="sans" style="cursor:pointer;color:var(--accent);font-size:.92em;list-style:none">＋ 自定义添加我自己想到的名字</summary>
@@ -518,8 +524,56 @@ const DEFAULT_W = {命理:30,典籍:15,生肖:10,避讳:15,审美:15,音韵:15};
 
 /* ========= 状态 ========= */
 const STORAGE_KEY = "chen-naming-state-v1";
-const state = Object.assign({weights:{...DEFAULT_W},favs:{},sortBy:"score-desc",style:"all",elem:"all",favOnly:false,customs:[]}, JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"));
-function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+const CLOUD_URL = "https://jsonblob.com/api/jsonBlob/019ec416-a237-7aee-81f6-ed7ad8ae513f";
+/* 本地只存：昵称 / 权重 / 排序筛选偏好。云端存：customs[] + votes{nickname:[id]} */
+const state = Object.assign({weights:{...DEFAULT_W},sortBy:"score-desc",style:"all",elem:"all",favOnly:false,nickname:""}, JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"));
+let cloud = {customs:[],votes:{}}; /* 全家共享 */
+state.customs = []; /* 兼容字段，render 时用 cloud.customs */
+state.favs = {};    /* 兼容字段，render 时由 cloud.votes 计算当前用户的收藏 */
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify({weights:state.weights,sortBy:state.sortBy,style:state.style,elem:state.elem,favOnly:state.favOnly,nickname:state.nickname}))}
+
+/* ========= 云端读写 ========= */
+let _cloudBusy=false, _pendingPush=false;
+async function cloudPull(){
+  try{
+    const r=await fetch(CLOUD_URL,{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const d=await r.json();
+    cloud.customs = Array.isArray(d.customs)?d.customs:[];
+    cloud.votes = d.votes && typeof d.votes==="object"?d.votes:{};
+    refreshFavs();
+  }catch(e){console.warn("cloud pull fail",e);showSync("⚠ 同步失败，使用离线数据");}
+}
+async function cloudPush(){
+  if(_cloudBusy){_pendingPush=true;return;}
+  _cloudBusy=true;showSync("☁ 同步中…");
+  try{
+    const r=await fetch(CLOUD_URL,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({version:1,customs:cloud.customs,votes:cloud.votes})});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    showSync("✓ 已同步到云端 "+new Date().toLocaleTimeString().slice(0,5));
+  }catch(e){console.warn("cloud push fail",e);showSync("⚠ 同步失败，请稍后重试");}
+  _cloudBusy=false;
+  if(_pendingPush){_pendingPush=false;cloudPush();}
+}
+function showSync(msg){const el=document.getElementById("syncStatus");if(el){el.textContent=msg;}}
+function refreshFavs(){
+  state.favs={};
+  const me=state.nickname||"_anon";
+  const myVotes=cloud.votes[me]||[];
+  myVotes.forEach(id=>state.favs[id]=true);
+}
+function toggleVote(id){
+  const me=state.nickname; if(!me){promptNickname();return;}
+  const arr=cloud.votes[me]=cloud.votes[me]||[];
+  const i=arr.indexOf(id);
+  if(i>=0)arr.splice(i,1); else arr.push(id);
+  if(!arr.length)delete cloud.votes[me];
+  refreshFavs();render();cloudPush();
+}
+function promptNickname(){
+  const n=prompt("请先输入你的昵称（用于区分谁加的收藏 / 自定义）：","");
+  if(n&&n.trim()){state.nickname=n.trim();save();render();}
+}
 
 /* ========= 工具 ========= */
 function score(n){
@@ -536,7 +590,7 @@ const totalEl=document.getElementById("totalCount"), totalEl2=document.getElemen
 const visEl=document.getElementById("visibleCount"), emptyEl=document.getElementById("emptyHint");
 
 function render(){
-  const ALL = NAMES.concat((state.customs||[]).map(c=>({...c,_isCustom:true})));
+  const ALL = NAMES.concat((cloud.customs||[]).map(c=>({...c,_isCustom:true})));
   let arr = ALL.map(n=>({...n,_score:score(n)}));
   if(state.style!=="all") arr=arr.filter(n=>n.styles.includes(state.style));
   if(state.elem!=="all") arr=arr.filter(n=>n.elems.includes(state.elem));
@@ -548,23 +602,25 @@ function render(){
     case "strokes-asc":arr.sort((a,b)=>totalStrokes(a)-totalStrokes(b));break;
   }
   list.innerHTML=arr.map(n=>cardHtml(n)).join("");
-  const tot=NAMES.length+(state.customs?.length||0);
+  const tot=NAMES.length+(cloud.customs?.length||0);
   totalEl.textContent=tot; totalEl2.textContent=tot;
   visEl.textContent=`显示 ${arr.length} / ${tot}`;
   emptyEl.style.display=arr.length?"none":"block";
+  const nd=document.getElementById("nickDisplay");if(nd)nd.textContent=state.nickname||"点此设昵称";
   renderShortlist();
   /* bind copy & fav */
   list.querySelectorAll(".copy").forEach(b=>b.onclick=e=>{
     const t=b.dataset.t;navigator.clipboard.writeText(t);b.textContent="✓";setTimeout(()=>b.textContent="复制",1500);e.stopPropagation();e.preventDefault();
   });
   list.querySelectorAll(".nc-fav").forEach(b=>b.onclick=e=>{
-    const id=b.dataset.id;state.favs[id]=!state.favs[id];save();render();e.stopPropagation();e.preventDefault();
+    toggleVote(b.dataset.id);e.stopPropagation();e.preventDefault();
   });
   list.querySelectorAll("[data-removeCustom]").forEach(b=>b.onclick=e=>{
-    const id=b.dataset.removecustom||b.getAttribute("data-removeCustom");
-    state.customs=(state.customs||[]).filter(c=>c.id!==id);
-    delete state.favs[id];
-    save();render();e.stopPropagation();e.preventDefault();
+    const id=b.getAttribute("data-removeCustom");
+    cloud.customs=(cloud.customs||[]).filter(c=>c.id!==id);
+    Object.keys(cloud.votes).forEach(u=>{cloud.votes[u]=(cloud.votes[u]||[]).filter(x=>x!==id);if(!cloud.votes[u].length)delete cloud.votes[u];});
+    refreshFavs();render();cloudPush();
+    e.stopPropagation();e.preventDefault();
   });
 }
 
@@ -638,18 +694,46 @@ document.getElementById("exportBtn").onclick=()=>{
 document.querySelectorAll(`.chip[data-filter="style"]`).forEach(c=>c.classList.toggle("on",c.dataset.val===state.style));
 document.querySelectorAll(`.chip[data-filter="elem"]`).forEach(c=>c.classList.toggle("on",c.dataset.val===state.elem));
 
-render();
+/* render() 已在文件末尾的启动 IIFE 中调用，这里不再重复 */
 
 function renderShortlist(){
   const box=document.getElementById("shortlistBox");
   if(!box)return;
-  const ALL = NAMES.concat((state.customs||[]).map(c=>({...c,_isCustom:true})));
-  const favs=ALL.filter(n=>state.favs[n.id]).map(n=>({...n,_score:score(n)})).sort((a,b)=>b._score-a._score);
-  if(!favs.length){box.innerHTML='尚未收藏。点击任意名字右侧的 ★ 加入候选，或在下方"＋ 自定义添加"录入自己想到的名字。';return;}
-  box.innerHTML='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">'+
-    favs.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif"><b style="letter-spacing:.1em">${n.full}</b>${n._isCustom?' <span class="sans" style="background:rgba(168,52,29,.15);color:var(--vermilion);font-size:.78em;padding:1px 6px;border-radius:8px">自</span>':''} <span class="sans" style="color:var(--gold);font-size:.85em">${n._score}分</span> <span style="cursor:pointer;color:var(--mute);margin-left:4px" onclick="state.favs['${n.id}']=false;save();render();">×</span></span>`).join('')+
-    '</div>'+
-    `<p class="sans" style="font-size:.84em;color:var(--mute);margin-top:10px">★ 共 ${favs.length} 个候选 · 与命理首推「陈长庚」一同进入最终决选 · <a href="javascript:document.getElementById('exportBtn').click()" style="color:var(--accent)">导出 TXT</a></p>`;
+  const ALL = NAMES.concat((cloud.customs||[]).map(c=>({...c,_isCustom:true})));
+  /* 全家票数统计 */
+  const voteCount={};
+  Object.values(cloud.votes||{}).forEach(arr=>arr.forEach(id=>voteCount[id]=(voteCount[id]||0)+1));
+  const voters={};
+  Object.entries(cloud.votes||{}).forEach(([u,arr])=>arr.forEach(id=>{(voters[id]=voters[id]||[]).push(u)}));
+  /* 当前用户的收藏 */
+  const me=state.nickname||"_anon";
+  const myVotes=(cloud.votes||{})[me]||[];
+  const myFavs=ALL.filter(n=>myVotes.includes(n.id)).map(n=>({...n,_score:score(n),_voters:voters[n.id]||[]})).sort((a,b)=>b._score-a._score);
+  /* 全家热度 Top（含其他人选的、即便我没选） */
+  const familyTop=Object.entries(voteCount).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([id,cnt])=>{
+    const n=ALL.find(x=>x.id===id);return n?{...n,_score:score(n),_cnt:cnt,_voters:voters[id]||[]}:null;
+  }).filter(Boolean);
+
+  let html='';
+  if(!state.nickname){
+    html=`<div class="sans" style="background:rgba(168,52,29,.08);border:1px dashed var(--vermilion);border-radius:8px;padding:10px 14px;color:var(--vermilion);font-size:.9em">⚠ 你还没设置昵称。<a href="javascript:promptNickname()" style="color:var(--vermilion);font-weight:600">点此设置</a> 后再加收藏。</div>`;
+  }
+  /* 全家投票热度 */
+  if(familyTop.length){
+    html+=`<div style="margin-bottom:14px"><div class="sans" style="font-size:.88em;color:var(--accent);margin-bottom:6px">🏆 全家投票热度 Top</div><div style="display:flex;flex-wrap:wrap;gap:8px">`+
+      familyTop.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif"><b style="letter-spacing:.1em">${n.full}</b>${n._isCustom?' <span class="sans" style="background:rgba(168,52,29,.15);color:var(--vermilion);font-size:.78em;padding:1px 6px;border-radius:8px">自</span>':''} <span class="sans" style="color:var(--vermilion);font-size:.85em" title="${n._voters.join('、')}">★${n._cnt}</span></span>`).join('')+`</div></div>`;
+  }
+  /* 我的收藏 */
+  html+=`<div class="sans" style="font-size:.88em;color:var(--accent);margin-bottom:6px">${state.nickname?'我（'+state.nickname+'）的收藏':'我的收藏'}</div>`;
+  if(!myFavs.length){
+    html+='<div class="sans" style="color:var(--mute);font-size:.9em">尚未收藏。点击任意名字右侧的 ★ 加入候选，或在下方"＋ 自定义添加"录入自己想到的名字。</div>';
+  }else{
+    html+='<div style="display:flex;flex-wrap:wrap;gap:8px">'+
+      myFavs.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif"><b style="letter-spacing:.1em">${n.full}</b>${n._isCustom?' <span class="sans" style="background:rgba(168,52,29,.15);color:var(--vermilion);font-size:.78em;padding:1px 6px;border-radius:8px">自</span>':''} <span class="sans" style="color:var(--gold);font-size:.85em">${n._score}分</span> <span style="cursor:pointer;color:var(--mute);margin-left:4px" onclick="toggleVote('${n.id}')">×</span></span>`).join('')+
+      '</div>'+
+      `<p class="sans" style="font-size:.84em;color:var(--mute);margin-top:10px">★ 我选了 ${myFavs.length} 个 · <a href="javascript:document.getElementById('exportBtn').click()" style="color:var(--accent)">导出 TXT</a> · <a href="javascript:cloudPull().then(render)" style="color:var(--accent)">刷新云端</a></p>`;
+  }
+  box.innerHTML=html;
 }
 
 /* ========= 自定义添加 ========= */
@@ -662,18 +746,29 @@ function renderShortlist(){
     const msg=document.getElementById("ca-msg");
     if(!zi){msg.textContent="请输入名字（1-2 字）";msg.style.color="var(--vermilion)";return;}
     if(zi.length>2){msg.textContent="名字最多 2 字";msg.style.color="var(--vermilion)";return;}
+    if(!state.nickname){promptNickname();if(!state.nickname){msg.textContent="请先设置昵称";msg.style.color="var(--vermilion)";return;}}
     const elems=[...document.querySelectorAll("#customAdd input[data-elem]:checked")].map(x=>x.dataset.elem);
     const styles=[...document.querySelectorAll("#customAdd input[data-style]:checked")].map(x=>x.dataset.style);
     const id="custom-"+Date.now().toString(36);
-    const item={id,zi,full:"陈"+zi,py:py||"",tone:"",styles:styles.length?styles:["雅"],elems,strokes:[7,0,0],rare:3,meaning:meaning||"（用户自定义条目）",dims:{命理:3,典籍:3,生肖:3,避讳:3,审美:3,音韵:3}};
-    state.customs=(state.customs||[]).concat(item);
-    state.favs[id]=true;
-    save();render();
+    const item={id,zi,full:"陈"+zi,py:py||"",tone:"",styles:styles.length?styles:["雅"],elems,strokes:[7,0,0],rare:3,meaning:meaning||"（用户自定义条目）",dims:{命理:3,典籍:3,生肖:3,避讳:3,审美:3,音韵:3},addedBy:state.nickname};
+    cloud.customs=(cloud.customs||[]).concat(item);
+    cloud.votes[state.nickname]=(cloud.votes[state.nickname]||[]).concat(id);
+    refreshFavs();render();cloudPush();
     document.getElementById("ca-zi").value="";document.getElementById("ca-py").value="";document.getElementById("ca-meaning").value="";
     document.querySelectorAll("#customAdd input[type=checkbox]").forEach(c=>c.checked=false);
-    msg.textContent=`✓ 已添加「陈${zi}」并自动收藏`;msg.style.color="var(--gold)";
+    msg.textContent=`✓ 已添加「陈${zi}」并自动收藏（${state.nickname}）`;msg.style.color="var(--gold)";
     setTimeout(()=>{msg.textContent=""},2500);
   };
+})();
+
+/* ========= 启动：先拉云端再渲染 + 30s 轮询 ========= */
+(async()=>{
+  if(!state.nickname){
+    /* 不强制弹窗，渲染时才提示 */
+  }
+  await cloudPull();
+  render();
+  setInterval(()=>{cloudPull().then(render)},30000);
 })();
 </script>
 </body></html>
