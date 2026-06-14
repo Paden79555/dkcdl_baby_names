@@ -203,6 +203,31 @@ details.weights summary::before{content:"⚙ ";color:var(--gold)}
 <div class="bz-card" id="myShortlist" style="border:2px solid var(--gold);background:linear-gradient(135deg,rgba(184,137,58,.06),transparent)">
 <h3 style="margin-top:0">★ 我的候选 <span class="sans" style="color:var(--mute);font-weight:400;font-size:.82em">（收藏的名字与首推一同进入决选）</span></h3>
 <div id="shortlistBox" class="sans" style="font-size:.92em;color:var(--mute)">尚未收藏。点击任意名字右侧的 ★ 加入候选。</div>
+<details style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px" id="customAdd">
+<summary class="sans" style="cursor:pointer;color:var(--accent);font-size:.92em;list-style:none">＋ 自定义添加我自己想到的名字</summary>
+<div class="sans" style="font-size:.88em;margin-top:10px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+<input id="ca-zi" placeholder="名字（如：长庚 / 安洲）" maxlength="2" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
+<input id="ca-py" placeholder="拼音（可选，如：Cháng-gēng）" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
+</div>
+<input id="ca-meaning" placeholder="寓意备注（可选）" style="width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit;margin-bottom:8px">
+<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+<span style="color:var(--mute);font-size:.85em">补益：</span>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="水"> 补水</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="金"> 补金</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="木"> 补木</label>
+<span style="color:var(--mute);font-size:.85em;margin-left:8px">风格：</span>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="阔"> 阔</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="文"> 文</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="武"> 武</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="雅"> 雅</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="仙"> 仙</label>
+</div>
+<button id="ca-add" class="copy" style="padding:6px 14px">＋ 加入候选并自动收藏</button>
+<span id="ca-msg" style="margin-left:10px;color:var(--mute);font-size:.85em"></span>
+<p style="font-size:.8em;color:var(--mute);margin-top:8px">※ 自定义名字会用六维默认 3 星评分（中性），自动加 ★ 收藏并标记"自"角标。可随时通过点 ★ 取消。</p>
+</div>
+</details>
 </div>
 
 <h2 id="rejected">三、否决名单（透明化）</h2>
@@ -493,7 +518,7 @@ const DEFAULT_W = {命理:30,典籍:15,生肖:10,避讳:15,审美:15,音韵:15};
 
 /* ========= 状态 ========= */
 const STORAGE_KEY = "chen-naming-state-v1";
-const state = Object.assign({weights:{...DEFAULT_W},favs:{},sortBy:"score-desc",style:"all",elem:"all",favOnly:false}, JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"));
+const state = Object.assign({weights:{...DEFAULT_W},favs:{},sortBy:"score-desc",style:"all",elem:"all",favOnly:false,customs:[]}, JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"));
 function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
 
 /* ========= 工具 ========= */
@@ -511,7 +536,8 @@ const totalEl=document.getElementById("totalCount"), totalEl2=document.getElemen
 const visEl=document.getElementById("visibleCount"), emptyEl=document.getElementById("emptyHint");
 
 function render(){
-  let arr = NAMES.map(n=>({...n,_score:score(n)}));
+  const ALL = NAMES.concat((state.customs||[]).map(c=>({...c,_isCustom:true})));
+  let arr = ALL.map(n=>({...n,_score:score(n)}));
   if(state.style!=="all") arr=arr.filter(n=>n.styles.includes(state.style));
   if(state.elem!=="all") arr=arr.filter(n=>n.elems.includes(state.elem));
   if(state.favOnly) arr=arr.filter(n=>state.favs[n.id]);
@@ -522,8 +548,9 @@ function render(){
     case "strokes-asc":arr.sort((a,b)=>totalStrokes(a)-totalStrokes(b));break;
   }
   list.innerHTML=arr.map(n=>cardHtml(n)).join("");
-  totalEl.textContent=NAMES.length; totalEl2.textContent=NAMES.length;
-  visEl.textContent=`显示 ${arr.length} / ${NAMES.length}`;
+  const tot=NAMES.length+(state.customs?.length||0);
+  totalEl.textContent=tot; totalEl2.textContent=tot;
+  visEl.textContent=`显示 ${arr.length} / ${tot}`;
   emptyEl.style.display=arr.length?"none":"block";
   renderShortlist();
   /* bind copy & fav */
@@ -533,35 +560,46 @@ function render(){
   list.querySelectorAll(".nc-fav").forEach(b=>b.onclick=e=>{
     const id=b.dataset.id;state.favs[id]=!state.favs[id];save();render();e.stopPropagation();e.preventDefault();
   });
+  list.querySelectorAll("[data-removeCustom]").forEach(b=>b.onclick=e=>{
+    const id=b.dataset.removecustom||b.getAttribute("data-removeCustom");
+    state.customs=(state.customs||[]).filter(c=>c.id!==id);
+    delete state.favs[id];
+    save();render();e.stopPropagation();e.preventDefault();
+  });
 }
 
 function cardHtml(n){
-  const elemTags = n.elems.map(e=>{
+  const elemTags = (n.elems||[]).map(e=>{
     const cls={水:"water",金:"metal",木:"wood",火:"fire",土:"earth"}[e]||"";
     return `<span class="tag ${cls}">补${e}</span>`;
   }).join("");
-  const styleTags = n.styles.map(s=>`<span class="tag">${s}</span>`).join("");
+  const styleTags = (n.styles||[]).map(s=>`<span class="tag">${s}</span>`).join("");
+  const customBadge = n._isCustom?`<span class="tag" style="background:rgba(168,52,29,.15);color:var(--vermilion)">自</span>`:'';
   const note = n.note?`<p class="sans" style="color:var(--mute);font-size:.84em">${n.note}</p>`:"";
   const dims = DIMS.map(d=>`<div class="dim"><span class="dim-l">${d}</span><span class="dim-s">${stars(n.dims[d]||0)}</span></div>`).join("");
+  const body = n._isCustom
+    ? `<p class="sans"><strong>自定义条目</strong>${n.meaning?'：'+n.meaning:''}</p>
+       <p class="sans" style="font-size:.86em;color:var(--mute)">这是你手动添加的候选，已自动加入收藏。如需评分参考，可后续告知 AI 补全命理点评。</p>
+       <div class="dim-grid">${dims}</div>
+       <button class="copy" data-removeCustom="${n.id}" style="background:var(--mute)">移除此自定义</button>`
+    : `<p><strong>专有名词「${n.zi}」：</strong>${n.term}</p>
+       <div class="quote">${n.quote}<cite>——${n.src}</cite></div>
+       <p><strong>整体寓意：</strong>${n.meaning}</p>
+       <p><strong>八字契合：</strong>${n.bz}</p>
+       <div class="dim-grid">${dims}</div>
+       <p class="sans" style="font-size:.84em;color:var(--mute)">总笔画 ${totalStrokes(n)} · 稀有度 ${"★".repeat(n.rare||0)} · 综合分 <b style="color:var(--gold)">${n._score}</b></p>
+       ${note}`;
   return `
 <details class="namecard" data-id="${n.id}">
 <summary>
   <span class="nc-name">${n.full}</span>
-  <span class="nc-py">${n.py} (${n.tone})</span>
-  <span class="nc-tags">${elemTags}${styleTags}</span>
+  <span class="nc-py">${n.py||''} ${n.tone?`(${n.tone})`:''}</span>
+  <span class="nc-tags">${customBadge}${elemTags}${styleTags}</span>
   <span class="nc-score">${n._score}分</span>
   <button class="nc-fav ${state.favs[n.id]?'on':''}" data-id="${n.id}" title="收藏">★</button>
-  <button class="copy" data-t="${n.full} ${n.py}">复制</button>
+  <button class="copy" data-t="${n.full} ${n.py||''}">复制</button>
 </summary>
-<div class="nc-body">
-<p><strong>专有名词「${n.zi}」：</strong>${n.term}</p>
-<div class="quote">${n.quote}<cite>——${n.src}</cite></div>
-<p><strong>整体寓意：</strong>${n.meaning}</p>
-<p><strong>八字契合：</strong>${n.bz}</p>
-<div class="dim-grid">${dims}</div>
-<p class="sans" style="font-size:.84em;color:var(--mute)">总笔画 ${totalStrokes(n)} · 稀有度 ${"★".repeat(n.rare)} · 综合分 <b style="color:var(--gold)">${n._score}</b></p>
-${note}
-</div>
+<div class="nc-body">${body}</div>
 </details>`;
 }
 
@@ -605,12 +643,37 @@ render();
 function renderShortlist(){
   const box=document.getElementById("shortlistBox");
   if(!box)return;
-  const favs=NAMES.filter(n=>state.favs[n.id]).map(n=>({...n,_score:score(n)})).sort((a,b)=>b._score-a._score);
-  if(!favs.length){box.innerHTML='尚未收藏。点击任意名字右侧的 ★ 加入候选。';return;}
+  const ALL = NAMES.concat((state.customs||[]).map(c=>({...c,_isCustom:true})));
+  const favs=ALL.filter(n=>state.favs[n.id]).map(n=>({...n,_score:score(n)})).sort((a,b)=>b._score-a._score);
+  if(!favs.length){box.innerHTML='尚未收藏。点击任意名字右侧的 ★ 加入候选，或在下方"＋ 自定义添加"录入自己想到的名字。';return;}
   box.innerHTML='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">'+
-    favs.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif"><b style="letter-spacing:.1em">${n.full}</b> <span class="sans" style="color:var(--gold);font-size:.85em">${n._score}分</span> <span style="cursor:pointer;color:var(--mute);margin-left:4px" onclick="state.favs['${n.id}']=false;save();render();">×</span></span>`).join('')+
+    favs.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif"><b style="letter-spacing:.1em">${n.full}</b>${n._isCustom?' <span class="sans" style="background:rgba(168,52,29,.15);color:var(--vermilion);font-size:.78em;padding:1px 6px;border-radius:8px">自</span>':''} <span class="sans" style="color:var(--gold);font-size:.85em">${n._score}分</span> <span style="cursor:pointer;color:var(--mute);margin-left:4px" onclick="state.favs['${n.id}']=false;save();render();">×</span></span>`).join('')+
     '</div>'+
     `<p class="sans" style="font-size:.84em;color:var(--mute);margin-top:10px">★ 共 ${favs.length} 个候选 · 与命理首推「陈长庚」一同进入最终决选 · <a href="javascript:document.getElementById('exportBtn').click()" style="color:var(--accent)">导出 TXT</a></p>`;
 }
+
+/* ========= 自定义添加 ========= */
+(function(){
+  const btn=document.getElementById("ca-add");if(!btn)return;
+  btn.onclick=()=>{
+    const zi=(document.getElementById("ca-zi").value||"").trim();
+    const py=(document.getElementById("ca-py").value||"").trim();
+    const meaning=(document.getElementById("ca-meaning").value||"").trim();
+    const msg=document.getElementById("ca-msg");
+    if(!zi){msg.textContent="请输入名字（1-2 字）";msg.style.color="var(--vermilion)";return;}
+    if(zi.length>2){msg.textContent="名字最多 2 字";msg.style.color="var(--vermilion)";return;}
+    const elems=[...document.querySelectorAll("#customAdd input[data-elem]:checked")].map(x=>x.dataset.elem);
+    const styles=[...document.querySelectorAll("#customAdd input[data-style]:checked")].map(x=>x.dataset.style);
+    const id="custom-"+Date.now().toString(36);
+    const item={id,zi,full:"陈"+zi,py:py||"",tone:"",styles:styles.length?styles:["雅"],elems,strokes:[7,0,0],rare:3,meaning:meaning||"（用户自定义条目）",dims:{命理:3,典籍:3,生肖:3,避讳:3,审美:3,音韵:3}};
+    state.customs=(state.customs||[]).concat(item);
+    state.favs[id]=true;
+    save();render();
+    document.getElementById("ca-zi").value="";document.getElementById("ca-py").value="";document.getElementById("ca-meaning").value="";
+    document.querySelectorAll("#customAdd input[type=checkbox]").forEach(c=>c.checked=false);
+    msg.textContent=`✓ 已添加「陈${zi}」并自动收藏`;msg.style.color="var(--gold)";
+    setTimeout(()=>{msg.textContent=""},2500);
+  };
+})();
 </script>
 </body></html>
