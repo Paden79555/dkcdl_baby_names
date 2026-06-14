@@ -147,6 +147,30 @@ table.bz td.lbl{background:rgba(184,137,58,.06);font-weight:600;width:64px}
 <p class="sans" style="font-size:.86em;color:var(--mute)">天津东经117.2°，经度时差 (117.2-120)×4 ≈ -11min；2026/6/10 均时差 ≈ +1min；合计 16:47-10 ≈ <b>16:37</b>，仍属申时（15-17），时柱"甲申"不变。</p>
 </div>
 
+<div class="bz-card" id="myShortlist" style="border:2px solid var(--gold);background:linear-gradient(135deg,rgba(184,137,58,.06),transparent)">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+<h3 style="margin:0">★ 全家投票 / 我的候选</h3>
+<div class="sans" style="font-size:.82em;color:var(--mute)">
+<span id="syncStatus">☁ 待同步</span> ·
+<a href="javascript:promptNickname()" style="color:var(--accent);text-decoration:none">👤 <span id="nickDisplay">未设置昵称</span></a>
+</div>
+</div>
+<div id="shortlistBox" class="sans" style="font-size:.92em;color:var(--mute)">尚未收藏。点击任意名字右侧的 ★ 加入候选。</div>
+<details style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px" id="customAdd">
+<summary class="sans" style="cursor:pointer;color:var(--accent);font-size:.92em;list-style:none">＋ 自定义添加我自己想到的名字</summary>
+<div class="sans" style="font-size:.88em;margin-top:10px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+<input id="ca-zi" placeholder="名字（如：观澜 / 长川）" maxlength="2" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
+<input id="ca-py" placeholder="拼音（可选）" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
+</div>
+<input id="ca-meaning" placeholder="寓意备注（可选）" style="width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit;margin-bottom:8px">
+<button id="ca-add" class="copy" style="padding:6px 14px">＋ 加入候选并自动收藏</button>
+<span id="ca-msg" style="margin-left:10px;color:var(--mute);font-size:.85em"></span>
+<p style="font-size:.8em;color:var(--mute);margin-top:8px">※ 自定义名字会自动加 ★ 收藏并标"自"角标，云端同步全家可见。</p>
+</div>
+</details>
+</div>
+
 <h2 id="names">二、候选名（<span id="totalCount">—</span> 个 · 全部基于"用神"逻辑生成）</h2>
 
 <div class="bz-card">
@@ -506,6 +530,61 @@ const NAMES = [
  yyzx:"²/²/⁴ 阳阳去·12+16画"}
 ];
 
+/* ========= 云端同步（与 index.html 共享同一 textdb key 也可，但为隔离用 reborn key） ========= */
+const CLOUD_KEY="ChenDkcdlReborn79555";
+const CLOUD_GET="https://textdb.online/"+CLOUD_KEY;
+const CLOUD_PUT="https://textdb.online/update";
+const STORAGE_KEY="chen-naming-reborn-v1";
+const local=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");
+const state={nickname:local.nickname||""};
+let cloud={customs:[],votes:{}};
+let _busy=false,_pending=false;
+
+function saveLocal(){localStorage.setItem(STORAGE_KEY,JSON.stringify({nickname:state.nickname}));}
+function showSync(m){const e=document.getElementById("syncStatus");if(e)e.textContent=m;}
+async function cloudPull(){
+  try{
+    const r=await fetch(CLOUD_GET+"?t="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const t=await r.text();
+    if(!t.trim()){cloud={customs:[],votes:{}};return;}
+    const d=JSON.parse(t);
+    cloud.customs=Array.isArray(d.customs)?d.customs:[];
+    cloud.votes=(d.votes&&typeof d.votes==="object")?d.votes:{};
+    showSync("✓ 已同步 "+new Date().toLocaleTimeString().slice(0,5));
+  }catch(e){console.warn(e);showSync("⚠ 同步失败 "+e.message);}
+}
+async function cloudPush(){
+  if(_busy){_pending=true;return;}
+  _busy=true;showSync("☁ 同步中…");
+  try{
+    const body=new URLSearchParams();
+    body.append("key",CLOUD_KEY);
+    body.append("value",JSON.stringify({version:1,customs:cloud.customs,votes:cloud.votes}));
+    const r=await fetch(CLOUD_PUT,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body.toString()});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const j=await r.json();
+    if(j.status!==1) throw new Error(j.error||"unknown");
+    showSync("✓ 已同步 "+new Date().toLocaleTimeString().slice(0,5));
+  }catch(e){console.warn(e);showSync("⚠ 推送失败 "+e.message);}
+  _busy=false;
+  if(_pending){_pending=false;cloudPush();}
+}
+function promptNickname(){
+  const n=prompt("请输入你的昵称（用于全家投票区分人）：",state.nickname||"");
+  if(n&&n.trim()){state.nickname=n.trim();saveLocal();render();}
+}
+function getMyVotes(){const me=state.nickname||"_anon";return cloud.votes[me]||[];}
+function toggleVote(id){
+  if(!state.nickname){promptNickname();if(!state.nickname)return;}
+  const me=state.nickname;
+  const arr=cloud.votes[me]=cloud.votes[me]||[];
+  const i=arr.indexOf(id);
+  if(i>=0)arr.splice(i,1);else arr.push(id);
+  if(!arr.length)delete cloud.votes[me];
+  render();cloudPush();
+}
+
 /* ========= 渲染逻辑 ========= */
 const list=document.getElementById("nameList");
 const totalEl=document.getElementById("totalCount"), totalEl2=document.getElementById("totalCount2");
@@ -514,42 +593,120 @@ const TIER_RANK={S:3,A:2,B:1};
 
 let curTier="all", curSort="tier-desc", curQuery="";
 
+function getAll(){return NAMES.concat((cloud.customs||[]).map(c=>({...c,_isCustom:true})));}
+
 function render(){
-  let arr=NAMES.slice();
+  const all=getAll();
+  let arr=all.slice();
   if(curTier!=="all") arr=arr.filter(n=>n.tier===curTier);
   if(curQuery){
     const q=curQuery.toLowerCase();
-    arr=arr.filter(n=>(n.full+n.py+n.useGod+n.src+n.quote+n.meaning).toLowerCase().includes(q));
+    arr=arr.filter(n=>(n.full+(n.py||"")+(n.useGod||"")+(n.src||"")+(n.quote||"")+(n.meaning||"")).toLowerCase().includes(q));
   }
-  if(curSort==="tier-desc") arr.sort((a,b)=>(TIER_RANK[b.tier]||0)-(TIER_RANK[a.tier]||0)||b.rare-a.rare);
-  else if(curSort==="rare-desc") arr.sort((a,b)=>b.rare-a.rare);
+  if(curSort==="tier-desc") arr.sort((a,b)=>(TIER_RANK[b.tier||"B"]||0)-(TIER_RANK[a.tier||"B"]||0)||(b.rare||0)-(a.rare||0));
+  else if(curSort==="rare-desc") arr.sort((a,b)=>(b.rare||0)-(a.rare||0));
   list.innerHTML=arr.map(cardHtml).join("");
-  totalEl.textContent=NAMES.length; totalEl2.textContent=NAMES.length;
-  visEl.textContent=`显示 ${arr.length} / ${NAMES.length}`;
+  totalEl.textContent=all.length; totalEl2.textContent=all.length;
+  visEl.textContent=`显示 ${arr.length} / ${all.length}`;
   emptyEl.style.display=arr.length?"none":"block";
+  const nd=document.getElementById("nickDisplay");if(nd)nd.textContent=state.nickname||"点此设昵称";
   list.querySelectorAll(".copy").forEach(b=>b.onclick=e=>{
     navigator.clipboard.writeText(b.dataset.t);b.textContent="✓";setTimeout(()=>b.textContent="复制",1500);e.stopPropagation();e.preventDefault();
   });
+  list.querySelectorAll(".nc-fav").forEach(b=>b.onclick=e=>{
+    toggleVote(b.dataset.id);e.stopPropagation();e.preventDefault();
+  });
+  list.querySelectorAll("[data-rmcustom]").forEach(b=>b.onclick=e=>{
+    const id=b.getAttribute("data-rmcustom");
+    cloud.customs=(cloud.customs||[]).filter(c=>c.id!==id);
+    Object.keys(cloud.votes).forEach(u=>{cloud.votes[u]=(cloud.votes[u]||[]).filter(x=>x!==id);if(!cloud.votes[u].length)delete cloud.votes[u];});
+    render();cloudPush();
+    e.stopPropagation();e.preventDefault();
+  });
+  renderShortlist();
 }
+
 function cardHtml(n){
   const cav=n.caveat?`<p style="color:var(--vermilion);font-size:.86em" class="sans">${n.caveat}</p>`:"";
-  return `<details class="namecard">
+  const myVotes=getMyVotes();
+  const fav=myVotes.includes(n.id);
+  const customBadge=n._isCustom?`<span class="tag" style="background:rgba(168,52,29,.15);color:var(--vermilion)">自</span>`:"";
+  const body=n._isCustom
+    ? `<p class="sans"><strong>自定义条目</strong>${n.meaning?'：'+n.meaning:''}${n.addedBy?` <span style="color:var(--mute)">（添加人：${n.addedBy}）</span>`:''}</p>
+       <button class="copy" data-rmcustom="${n.id}" style="background:var(--mute)">移除此自定义</button>`
+    : `<p><strong>用神契合：</strong>${n.useGod}</p>
+       <div class="quote">${n.quote}<cite>——${n.src}</cite></div>
+       <p><strong>整体寓意：</strong>${n.meaning}</p>
+       <p class="sans" style="font-size:.85em;color:var(--mute)">音韵字形：${n.yyzx}</p>
+       ${cav}`;
+  return `<details class="namecard" data-id="${n.id}">
 <summary>
   <span class="nc-name">${n.full}</span>
-  <span class="nc-py">${n.py} (${n.tone})</span>
-  <span class="tag tier-${n.tier}">${n.tier} 级</span>
-  <span class="nc-score">稀 ${"★".repeat(n.rare)}</span>
-  <button class="copy" data-t="${n.full} ${n.py}">复制</button>
+  <span class="nc-py">${n.py||""} ${n.tone?"("+n.tone+")":""}</span>
+  ${customBadge}
+  ${n.tier?`<span class="tag tier-${n.tier}">${n.tier} 级</span>`:""}
+  <span class="nc-score">稀 ${"★".repeat(n.rare||3)}</span>
+  <button class="nc-fav ${fav?"on":""}" data-id="${n.id}" title="收藏">★</button>
+  <button class="copy" data-t="${n.full} ${n.py||""}">复制</button>
 </summary>
-<div class="nc-body">
-<p><strong>用神契合：</strong>${n.useGod}</p>
-<div class="quote">${n.quote}<cite>——${n.src}</cite></div>
-<p><strong>整体寓意：</strong>${n.meaning}</p>
-<p class="sans" style="font-size:.85em;color:var(--mute)">音韵字形：${n.yyzx}</p>
-${cav}
-</div>
+<div class="nc-body">${body}</div>
 </details>`;
 }
+
+function renderShortlist(){
+  const box=document.getElementById("shortlistBox");if(!box)return;
+  const all=getAll();
+  const voteCount={},voters={};
+  Object.entries(cloud.votes||{}).forEach(([u,arr])=>arr.forEach(id=>{
+    voteCount[id]=(voteCount[id]||0)+1;
+    (voters[id]=voters[id]||[]).push(u);
+  }));
+  const me=state.nickname||"_anon";
+  const myV=cloud.votes[me]||[];
+  const myFavs=all.filter(n=>myV.includes(n.id));
+  const familyTop=Object.entries(voteCount).sort((a,b)=>b[1]-a[1]).slice(0,8)
+    .map(([id,c])=>{const n=all.find(x=>x.id===id);return n?{...n,_cnt:c,_voters:voters[id]||[]}:null;}).filter(Boolean);
+
+  let html="";
+  if(!state.nickname){
+    html=`<div class="sans" style="background:rgba(168,52,29,.08);border:1px dashed var(--vermilion);border-radius:8px;padding:10px 14px;color:var(--vermilion);font-size:.9em">⚠ 你还没设置昵称。<a href="javascript:promptNickname()" style="color:var(--vermilion);font-weight:600">点此设置</a> 后再加收藏。</div>`;
+  }
+  if(familyTop.length){
+    html+=`<div style="margin-bottom:14px"><div class="sans" style="font-size:.88em;color:var(--accent);margin-bottom:6px">🏆 全家投票热度 Top</div><div style="display:flex;flex-wrap:wrap;gap:8px">`+
+      familyTop.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif" title="${n._voters.join('、')}"><b style="letter-spacing:.1em">${n.full}</b>${n._isCustom?' <span class="sans" style="background:rgba(168,52,29,.15);color:var(--vermilion);font-size:.78em;padding:1px 6px;border-radius:8px">自</span>':''} <span class="sans" style="color:var(--vermilion);font-size:.85em">★${n._cnt}</span></span>`).join('')+`</div></div>`;
+  }
+  html+=`<div class="sans" style="font-size:.88em;color:var(--accent);margin-bottom:6px">${state.nickname?'我（'+state.nickname+'）的收藏':'我的收藏'}</div>`;
+  if(!myFavs.length){
+    html+='<div class="sans" style="color:var(--mute);font-size:.9em">尚未收藏。点击名字右侧的 ★ 加入候选，或下方"＋ 自定义添加"录入。</div>';
+  }else{
+    html+='<div style="display:flex;flex-wrap:wrap;gap:8px">'+
+      myFavs.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif"><b style="letter-spacing:.1em">${n.full}</b>${n._isCustom?' <span class="sans" style="background:rgba(168,52,29,.15);color:var(--vermilion);font-size:.78em;padding:1px 6px;border-radius:8px">自</span>':''}${n.tier?` <span class="tag tier-${n.tier}" style="font-size:.72em;padding:1px 6px">${n.tier}</span>`:''} <span style="cursor:pointer;color:var(--mute);margin-left:4px" onclick="toggleVote('${n.id}')">×</span></span>`).join('')+'</div>'+
+      `<p class="sans" style="font-size:.84em;color:var(--mute);margin-top:8px">★ 我选了 ${myFavs.length} 个 · <a href="javascript:cloudPull().then(render)" style="color:var(--accent)">刷新云端</a></p>`;
+  }
+  box.innerHTML=html;
+}
+
+/* 自定义添加 */
+(function(){
+  const btn=document.getElementById("ca-add");if(!btn)return;
+  btn.onclick=()=>{
+    const zi=(document.getElementById("ca-zi").value||"").trim();
+    const py=(document.getElementById("ca-py").value||"").trim();
+    const meaning=(document.getElementById("ca-meaning").value||"").trim();
+    const msg=document.getElementById("ca-msg");
+    if(!zi){msg.textContent="请输入名字（1-2 字）";msg.style.color="var(--vermilion)";return;}
+    if(zi.length>2){msg.textContent="名字最多 2 字";msg.style.color="var(--vermilion)";return;}
+    if(!state.nickname){promptNickname();if(!state.nickname){msg.textContent="请先设置昵称";msg.style.color="var(--vermilion)";return;}}
+    const id="custom-"+Date.now().toString(36);
+    const item={id,zi,full:"陈"+zi,py,tone:"",rare:3,tier:null,meaning:meaning||"（用户自定义条目）",addedBy:state.nickname};
+    cloud.customs=(cloud.customs||[]).concat(item);
+    cloud.votes[state.nickname]=(cloud.votes[state.nickname]||[]).concat(id);
+    render();cloudPush();
+    document.getElementById("ca-zi").value="";document.getElementById("ca-py").value="";document.getElementById("ca-meaning").value="";
+    msg.textContent=`✓ 已添加「陈${zi}」并自动收藏`;msg.style.color="var(--gold)";
+    setTimeout(()=>{msg.textContent=""},2500);
+  };
+})();
 
 document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
   document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));
@@ -558,7 +715,11 @@ document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
 document.getElementById("sortBy").onchange=e=>{curSort=e.target.value;render();};
 document.getElementById("searchBox").oninput=e=>{curQuery=e.target.value;render();};
 
-render();
+(async()=>{
+  await cloudPull();
+  render();
+  setInterval(()=>{cloudPull().then(render)},30000);
+})();
 </script>
 
 </body>
