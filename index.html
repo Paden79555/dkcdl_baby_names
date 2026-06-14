@@ -524,7 +524,10 @@ const DEFAULT_W = {命理:30,典籍:15,生肖:10,避讳:15,审美:15,音韵:15};
 
 /* ========= 状态 ========= */
 const STORAGE_KEY = "chen-naming-state-v1";
-const CLOUD_URL = "https://jsonblob.com/api/jsonBlob/019ec416-a237-7aee-81f6-ed7ad8ae513f";
+/* 后端：textdb.online（公开KV，免登录，CORS 支持，30天无操作自动过期） */
+const CLOUD_KEY = "ChenDkcdl79555Family";
+const CLOUD_GET = "https://textdb.online/" + CLOUD_KEY;
+const CLOUD_PUT = "https://textdb.online/update";
 /* 本地只存：昵称 / 权重 / 排序筛选偏好。云端存：customs[] + votes{nickname:[id]} */
 const state = Object.assign({weights:{...DEFAULT_W},sortBy:"score-desc",style:"all",elem:"all",favOnly:false,nickname:""}, JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"));
 let cloud = {customs:[],votes:{}}; /* 全家共享 */
@@ -536,22 +539,30 @@ function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify({weights:state.w
 let _cloudBusy=false, _pendingPush=false;
 async function cloudPull(){
   try{
-    const r=await fetch(CLOUD_URL,{cache:"no-store"});
+    const r=await fetch(CLOUD_GET+"?t="+Date.now(),{cache:"no-store"});
     if(!r.ok) throw new Error("HTTP "+r.status);
-    const d=await r.json();
+    const txt=await r.text();
+    if(!txt.trim()){cloud={customs:[],votes:{}};refreshFavs();return;}
+    const d=JSON.parse(txt);
     cloud.customs = Array.isArray(d.customs)?d.customs:[];
     cloud.votes = d.votes && typeof d.votes==="object"?d.votes:{};
     refreshFavs();
-  }catch(e){console.warn("cloud pull fail",e);showSync("⚠ 同步失败，使用离线数据");}
+    showSync("✓ 已同步 "+new Date().toLocaleTimeString().slice(0,5));
+  }catch(e){console.warn("cloud pull fail",e);showSync("⚠ 同步失败 ("+e.message+")，使用离线数据");}
 }
 async function cloudPush(){
   if(_cloudBusy){_pendingPush=true;return;}
   _cloudBusy=true;showSync("☁ 同步中…");
   try{
-    const r=await fetch(CLOUD_URL,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({version:1,customs:cloud.customs,votes:cloud.votes})});
+    const body=new URLSearchParams();
+    body.append("key",CLOUD_KEY);
+    body.append("value",JSON.stringify({version:1,customs:cloud.customs,votes:cloud.votes}));
+    const r=await fetch(CLOUD_PUT,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body.toString()});
     if(!r.ok) throw new Error("HTTP "+r.status);
-    showSync("✓ 已同步到云端 "+new Date().toLocaleTimeString().slice(0,5));
-  }catch(e){console.warn("cloud push fail",e);showSync("⚠ 同步失败，请稍后重试");}
+    const j=await r.json();
+    if(j.status!==1) throw new Error(j.error||"unknown");
+    showSync("✓ 已同步 "+new Date().toLocaleTimeString().slice(0,5));
+  }catch(e){console.warn("cloud push fail",e);showSync("⚠ 推送失败 ("+e.message+")");}
   _cloudBusy=false;
   if(_pendingPush){_pendingPush=false;cloudPush();}
 }
