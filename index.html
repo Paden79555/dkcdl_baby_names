@@ -5,257 +5,473 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>陈氏麟儿命名录 · 2026.06.10</title>
 <style>
-:root{--bg:#faf7f2;--ink:#2b2620;--mute:#7a6f5f;--accent:#8b5a2b;--gold:#b8893a;--line:#e6ddd0;--card:#fffdf8;--hl:#fff6e0;}
-@media(prefers-color-scheme:dark){:root{--bg:#1a1815;--ink:#ebe5d8;--mute:#9a907e;--accent:#d4a96a;--gold:#e0b574;--line:#3a342c;--card:#23201b;--hl:#3a3220;}}
+:root{--bg:#faf7f2;--ink:#2b2620;--mute:#7a6f5f;--accent:#8b5a2b;--gold:#b8893a;--line:#e6ddd0;--card:#fffdf8;--hl:#fff6e0;--star:#d4a96a;--star-off:#d8cfc0;}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1815;--ink:#ebe5d8;--mute:#9a907e;--accent:#d4a96a;--gold:#e0b574;--line:#3a342c;--card:#23201b;--hl:#3a3220;--star-off:#4a4238;}}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Songti SC","STSong","Noto Serif CJK SC",serif;background:var(--bg);color:var(--ink);line-height:1.85;padding:32px 20px;max-width:960px;margin:0 auto}
-h1{font-size:2em;text-align:center;color:var(--accent);border-bottom:2px solid var(--gold);padding-bottom:14px;margin-bottom:8px;letter-spacing:6px}
-.sub{text-align:center;color:var(--mute);font-size:.9em;margin-bottom:28px}
-h2{font-size:1.35em;color:var(--accent);margin:32px 0 14px;padding-left:12px;border-left:4px solid var(--gold)}
-h3{font-size:1.05em;color:var(--accent);margin:18px 0 8px;font-weight:600}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;margin-bottom:18px}
-.tldr{background:var(--hl);border-left:4px solid var(--gold);padding:14px 18px;border-radius:0 8px 8px 0;margin:12px 0;font-family:"PingFang SC",sans-serif;font-size:.95em}
+body{font-family:"Songti SC","STSong","Noto Serif CJK SC",serif;background:var(--bg);color:var(--ink);line-height:1.85;padding:28px 18px;max-width:980px;margin:0 auto}
+h1{font-size:2em;text-align:center;color:var(--accent);border-bottom:2px solid var(--gold);padding-bottom:14px;margin-bottom:6px;letter-spacing:6px}
+.sub{text-align:center;color:var(--mute);font-size:.88em;margin-bottom:22px}
+h2{font-size:1.3em;color:var(--accent);margin:28px 0 12px;padding-left:12px;border-left:4px solid var(--gold)}
+h3{font-size:1.02em;color:var(--accent);margin:16px 0 8px;font-weight:600}
+.sans{font-family:"PingFang SC",-apple-system,sans-serif}
+.bz-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:16px}
+.tldr{background:var(--hl);border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0;font-family:"PingFang SC",sans-serif;font-size:.93em}
 .tldr b{color:var(--accent)}
-table.bz{width:100%;border-collapse:collapse;margin:14px 0;font-family:"PingFang SC",sans-serif;font-size:.95em}
-table.bz th,table.bz td{padding:10px 6px;text-align:center;border:1px solid var(--line)}
+table.bz{width:100%;border-collapse:collapse;margin:12px 0;font-family:"PingFang SC",sans-serif;font-size:.92em}
+table.bz th,table.bz td{padding:8px 4px;text-align:center;border:1px solid var(--line)}
 table.bz th{background:rgba(184,137,58,.12);font-weight:600}
-table.bz td.lbl{background:rgba(184,137,58,.06);font-weight:600;width:78px}
+table.bz td.lbl{background:rgba(184,137,58,.06);font-weight:600;width:64px}
 .dayMaster{background:rgba(212,169,106,.25)!important;font-weight:700;color:var(--accent)}
-.wuxing{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap;font-family:"PingFang SC",sans-serif}
-.wx{flex:1;min-width:90px;text-align:center;padding:12px 6px;border-radius:8px;border:1px solid var(--line)}
-.wx .n{font-size:1.6em;font-weight:700;display:block;margin-bottom:4px}
-.wx .l{font-size:.8em;color:var(--mute)}
+.wuxing{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap;font-family:"PingFang SC",sans-serif}
+.wx{flex:1;min-width:80px;text-align:center;padding:10px 4px;border-radius:8px;border:1px solid var(--line)}
+.wx .n{font-size:1.5em;font-weight:700;display:block}
+.wx .l{font-size:.78em;color:var(--mute)}
 .wx.fire{background:rgba(220,80,60,.08);color:#c0392b}
 .wx.earth{background:rgba(180,140,60,.08);color:#a07020}
 .wx.metal{background:rgba(140,140,150,.08);color:#5a6070}
 .wx.wood{background:rgba(80,160,80,.08);color:#2e7d32}
 .wx.water{background:rgba(60,130,200,.08);color:#1565c0}
-.wx.weak{outline:2px dashed currentColor;outline-offset:-4px}
-.legend{font-family:"PingFang SC",sans-serif;font-size:.88em;color:var(--mute);background:rgba(184,137,58,.05);padding:10px 14px;border-radius:6px;margin:10px 0}
-.tag{display:inline-block;padding:3px 11px;border-radius:12px;background:rgba(184,137,58,.15);color:var(--accent);font-size:.85em;margin:3px 4px 3px 0;font-family:"PingFang SC",sans-serif}
+.wx.weak{outline:2px dashed currentColor;outline-offset:-3px}
+.legend{font-family:"PingFang SC",sans-serif;font-size:.85em;color:var(--mute);background:rgba(184,137,58,.05);padding:9px 12px;border-radius:6px;margin:8px 0}
+.tag{display:inline-block;padding:2px 9px;border-radius:11px;background:rgba(184,137,58,.15);color:var(--accent);font-size:.82em;margin:2px 3px;font-family:"PingFang SC",sans-serif}
 .tag.warn{background:rgba(220,80,60,.12);color:#c0392b}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden;transition:box-shadow .2s}
-details[open]{box-shadow:0 4px 14px rgba(0,0,0,.06)}
-summary{padding:18px 22px;cursor:pointer;font-size:1.18em;font-weight:600;display:flex;justify-content:space-between;align-items:center;list-style:none;flex-wrap:wrap;gap:8px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"▾";color:var(--gold);transition:transform .2s;font-weight:400}
-details[open] summary::after{transform:rotate(180deg)}
-summary .name{color:var(--accent);letter-spacing:4px}
-summary .py{font-family:-apple-system,sans-serif;color:var(--mute);font-size:.85em;font-weight:400;margin-left:10px}
-summary .badge{font-size:.7em;padding:2px 8px;border-radius:10px;background:var(--gold);color:#fff;font-weight:400;margin-left:8px;font-family:"PingFang SC",sans-serif}
-.copy{background:var(--gold);color:#fff;border:none;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:.78em;margin-left:8px;font-family:"PingFang SC",sans-serif}
+.tag.water{background:rgba(60,130,200,.12);color:#1565c0}
+.tag.metal{background:rgba(140,140,150,.15);color:#5a6070}
+.tag.wood{background:rgba(80,160,80,.12);color:#2e7d32}
+.tag.fire{background:rgba(220,80,60,.12);color:#c0392b}
+.tag.earth{background:rgba(180,140,60,.15);color:#a07020}
+
+/* toolbar */
+.toolbar{position:sticky;top:0;z-index:10;background:var(--bg);padding:10px 0;margin:14px 0 8px;border-bottom:1px solid var(--line);font-family:"PingFang SC",sans-serif;font-size:.88em}
+.tb-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tb-row label{color:var(--mute);font-size:.85em}
+.tb-row select,.tb-row button{font-family:inherit;font-size:.88em;padding:5px 10px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tb-row button:hover,.tb-row select:hover{border-color:var(--gold)}
+.chip{padding:3px 10px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--mute);cursor:pointer;font-size:.82em;user-select:none}
+.chip.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+.tb-row .count{margin-left:auto;color:var(--mute);font-size:.82em}
+details.weights{margin:8px 0 4px;background:var(--card);border:1px solid var(--line);border-radius:8px;font-family:"PingFang SC",sans-serif;font-size:.85em}
+details.weights summary{padding:8px 14px;cursor:pointer;color:var(--mute);list-style:none}
+details.weights summary::-webkit-details-marker{display:none}
+details.weights summary::before{content:"⚙ ";color:var(--gold)}
+.w-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px 16px;padding:6px 14px 12px;border-top:1px dashed var(--line)}
+.w-row{display:flex;align-items:center;gap:8px;font-size:.82em}
+.w-row span:first-child{color:var(--accent);min-width:36px}
+.w-row input[type=range]{flex:1}
+.w-row .v{color:var(--mute);min-width:24px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* name card */
+.namecard{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;transition:box-shadow .2s}
+.namecard[open]{box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.namecard summary{padding:14px 18px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.namecard summary::-webkit-details-marker{display:none}
+.namecard summary::after{content:"▾";color:var(--gold);transition:transform .2s;margin-left:auto}
+.namecard[open] summary::after{transform:rotate(180deg)}
+.nc-name{font-size:1.3em;font-weight:600;color:var(--accent);letter-spacing:3px}
+.nc-py{font-family:-apple-system,sans-serif;color:var(--mute);font-size:.78em;font-weight:400}
+.nc-score{font-family:-apple-system,sans-serif;font-size:.85em;color:var(--gold);font-weight:600;background:rgba(184,137,58,.1);padding:3px 9px;border-radius:10px}
+.nc-fav{cursor:pointer;font-size:1.05em;color:var(--star-off);user-select:none;background:none;border:none;padding:0 4px}
+.nc-fav.on{color:var(--star)}
+.nc-tags{display:flex;flex-wrap:wrap;gap:3px;margin-left:6px}
+.nc-body{padding:4px 18px 18px;border-top:1px dashed var(--line)}
+.nc-body p{margin:8px 0;font-size:.93em}
+.nc-body strong{color:var(--accent)}
+.quote{background:rgba(184,137,58,.08);border-left:3px solid var(--gold);padding:10px 14px;margin:10px 0;font-style:italic;font-size:.9em;border-radius:0 6px 6px 0}
+.quote cite{display:block;text-align:right;color:var(--mute);font-style:normal;font-size:.82em;margin-top:4px}
+.dim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px 12px;margin:10px 0;font-family:"PingFang SC",sans-serif;font-size:.83em}
+.dim{display:flex;justify-content:space-between;align-items:center;padding:3px 0}
+.dim-l{color:var(--mute)}
+.dim-s{letter-spacing:1px;color:var(--star)}
+.dim-s i{color:var(--star-off);font-style:normal}
+.copy{background:var(--gold);color:#fff;border:none;padding:3px 9px;border-radius:4px;cursor:pointer;font-size:.76em;font-family:"PingFang SC",sans-serif}
 .copy:hover{opacity:.85}
-.body{padding:4px 22px 22px;border-top:1px dashed var(--line)}
-.body p{margin:10px 0;font-size:.95em}
-.body strong{color:var(--accent)}
-.quote{background:rgba(184,137,58,.08);border-left:3px solid var(--gold);padding:11px 16px;margin:12px 0;font-style:italic;font-size:.92em;border-radius:0 6px 6px 0}
-.quote cite{display:block;text-align:right;color:var(--mute);font-style:normal;font-size:.85em;margin-top:4px}
-.scoreRow{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap;font-family:"PingFang SC",sans-serif;font-size:.85em}
-.scoreRow span{background:rgba(184,137,58,.1);padding:3px 10px;border-radius:10px}
-.recommend{background:linear-gradient(135deg,rgba(184,137,58,.18),rgba(212,169,106,.08));border:2px solid var(--gold);border-radius:12px;padding:26px;margin:28px 0}
-.recommend h2{border:none;padding:0;margin-bottom:14px;font-size:1.4em}
-.recommend .reason{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;margin-top:14px;font-size:.95em}
-.recommend .reason b{color:var(--accent);white-space:nowrap}
-.rejected{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:18px 22px;margin-top:18px;font-size:.9em;color:var(--mute);font-family:"PingFang SC",sans-serif}
+.recommend{background:linear-gradient(135deg,rgba(184,137,58,.18),rgba(212,169,106,.08));border:2px solid var(--gold);border-radius:12px;padding:22px;margin:24px 0}
+.recommend h2{border:none;padding:0;margin-bottom:12px;font-size:1.32em}
+.reason{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin-top:10px;font-size:.92em;font-family:"PingFang SC",sans-serif}
+.reason b{color:var(--accent);white-space:nowrap}
+.rejected{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px 18px;margin-top:14px;font-size:.88em;color:var(--mute);font-family:"PingFang SC",sans-serif}
 .rejected b{color:var(--ink)}
-.glossary{font-family:"PingFang SC",sans-serif;font-size:.88em}
-.glossary dt{font-weight:600;color:var(--accent);margin-top:10px}
-.glossary dd{margin-left:0;color:var(--mute);margin-bottom:6px}
-.foot{text-align:center;color:var(--mute);font-size:.8em;margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-family:"PingFang SC",sans-serif}
-.toc{font-family:"PingFang SC",sans-serif;font-size:.9em;background:rgba(184,137,58,.06);padding:12px 18px;border-radius:8px;margin-bottom:20px;display:flex;flex-wrap:wrap;gap:6px 14px}
-.toc a{color:var(--accent);text-decoration:none}
-.toc a:hover{text-decoration:underline}
-@media(max-width:560px){body{padding:18px 12px}h1{font-size:1.5em;letter-spacing:3px}summary{font-size:1em}.recommend .reason{grid-template-columns:1fr}}
+.glossary{font-family:"PingFang SC",sans-serif;font-size:.86em}
+.glossary dt{font-weight:600;color:var(--accent);margin-top:8px}
+.glossary dd{color:var(--mute);margin-bottom:4px}
+.foot{text-align:center;color:var(--mute);font-size:.78em;margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-family:"PingFang SC",sans-serif}
+.empty{text-align:center;padding:40px 20px;color:var(--mute);font-family:"PingFang SC",sans-serif;font-size:.92em}
+@media(max-width:560px){body{padding:16px 10px}h1{font-size:1.45em;letter-spacing:3px}.nc-name{font-size:1.15em;letter-spacing:2px}.tb-row{font-size:.82em}.reason{grid-template-columns:1fr}.dim-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
 <h1>陈 氏 麟 儿 命 名 录</h1>
-<div class="sub">公历 2026 年 6 月 10 日 16:47 · 天津 · 真太阳时校正 -8 分钟（实际 16:39）</div>
-
-<div class="toc">
-<b>目录：</b>
-<a href="#bazi">① 八字总评</a>
-<a href="#names">② 候选名（首批8个）</a>
-<a href="#pick">③ 首推</a>
-<a href="#rejected">④ 否决名单</a>
-<a href="#glossary">⑤ 术语速查</a>
-</div>
+<div class="sub">公历 2026 年 6 月 10 日 16:47 · 天津 · 真太阳时校正 -8 分钟</div>
 
 <h2 id="bazi">一、八字与五行总评</h2>
-
-<div class="card">
-<div class="tldr">
-<b>一句话结论：</b>这孩子像盛夏正午晒得发烫的一片黄土地——结实、可靠、阳气足，但<b>缺水滋润</b>。起名应该"补水为主、配金为辅"，金能生水、能泄燥土，最忌再加"火、土"字根（如炎、烨、坤、垚）。
-</div>
+<div class="bz-card">
+<div class="tldr"><b>一句话结论：</b>这孩子像盛夏正午晒得发烫的一片黄土地——结实、可靠、阳气足，但<b>缺水滋润</b>。起名"补水为主、配金为辅"，最忌再加"火、土"字根。</div>
 
 <h3>① 四柱排盘</h3>
 <table class="bz">
 <tr><th></th><th>年柱</th><th>月柱</th><th>日柱（本人）</th><th>时柱</th></tr>
-<tr><td class="lbl">天干</td><td>丙（火）</td><td>甲（木）</td><td class="dayMaster">戊（土）</td><td>庚（金）</td></tr>
-<tr><td class="lbl">地支</td><td>午（火）</td><td>午（火）</td><td>戌（土）</td><td>申（金）</td></tr>
+<tr><td class="lbl">天干</td><td>丙(火)</td><td>甲(木)</td><td class="dayMaster">戊(土)</td><td>庚(金)</td></tr>
+<tr><td class="lbl">地支</td><td>午(火)</td><td>午(火)</td><td>戌(土)</td><td>申(金)</td></tr>
 <tr><td class="lbl">藏干</td><td>丁己</td><td>丁己</td><td>戊·辛·丁</td><td>庚·壬·戊</td></tr>
-<tr><td class="lbl">十神</td><td>偏印</td><td>七杀</td><td>—（日主）</td><td>食神</td></tr>
+<tr><td class="lbl">十神</td><td>偏印</td><td>七杀</td><td>—</td><td>食神</td></tr>
 </table>
-<p style="font-family:'PingFang SC',sans-serif;font-size:.88em;color:var(--mute)">※ 高亮的"<b style="color:var(--accent)">戊</b>"是本人的日主（自己），其余七个字都是描述他与世界的关系。</p>
+<p class="sans" style="font-size:.85em;color:var(--mute)">高亮的"<b style="color:var(--accent)">戊</b>"是日主（本人）。</p>
 
-<h3>② 五行强弱（含藏干加权）</h3>
+<h3>② 五行强弱（藏干加权）</h3>
 <div class="wuxing">
-<div class="wx fire"><span class="n">4.5</span><span class="l">火 · 旺</span></div>
-<div class="wx earth"><span class="n">3.5</span><span class="l">土 · 旺</span></div>
-<div class="wx metal"><span class="n">2.0</span><span class="l">金 · 中</span></div>
-<div class="wx wood"><span class="n">1.0</span><span class="l">木 · 弱</span></div>
-<div class="wx water weak"><span class="n">0.5</span><span class="l">水 · 极缺 ⚠</span></div>
+<div class="wx fire"><span class="n">4.5</span><span class="l">火·旺</span></div>
+<div class="wx earth"><span class="n">3.5</span><span class="l">土·旺</span></div>
+<div class="wx metal"><span class="n">2.0</span><span class="l">金·中</span></div>
+<div class="wx wood"><span class="n">1.0</span><span class="l">木·弱</span></div>
+<div class="wx water weak"><span class="n">0.5</span><span class="l">水·极缺⚠</span></div>
 </div>
-<div class="legend">
-<b>怎么读这张表：</b>把八字想象成一锅汤——五种味道（金木水火土）应当均衡。这孩子的"火"和"土"远超平均值2，"水"几乎为零。火土过旺=性格刚烈但容易急躁上火；水极缺=缺乏柔韧、流通和智慧之象。命名补水，等于给这锅汤兑一勺清水，让它更通透。
-</div>
+<div class="legend"><b>怎么读：</b>把八字想成一锅汤，五味需均衡。本案火土超标、水近无——补水让汤更通透。</div>
 
-<h3>③ 用神判定（最关键）</h3>
-<p style="font-family:'PingFang SC',sans-serif;font-size:.95em;line-height:1.9">
-<b>身强弱：</b><span class="tag">身强偏燥</span>——戊土生于午月（仲夏），自坐戌土通根，年月双午又来生身，土性极旺且燥。<br>
-<b>调候用神（第一优先）：</b><span class="tag">壬水</span><span class="tag">癸水</span>——《穷通宝鉴》明言"戊土生于五月，调候不可缺水"。盛夏黄土最怕开裂，必须有水滋润。<br>
-<b>扶抑用神（第二优先）：</b><span class="tag">金</span>——金能"泄"过旺的土（土生金），又能"生"极缺的水（金生水），是最巧妙的中间媒介。<br>
-<b>忌神：</b><span class="tag warn">火</span><span class="tag warn">燥土</span>——再加这两样就是火上浇油。
+<h3>③ 用神判定</h3>
+<p class="sans" style="font-size:.92em;line-height:1.85">
+<b>身强弱：</b><span class="tag">身强偏燥</span><br>
+<b>调候用神（首选）：</b><span class="tag water">壬水</span><span class="tag water">癸水</span> ——《穷通宝鉴》："戊土生于五月，调候不可缺水。"<br>
+<b>扶抑用神（次选）：</b><span class="tag metal">金</span> —— 泄燥土+生水，一举两得<br>
+<b>忌神：</b><span class="tag warn">火</span><span class="tag warn">燥土</span>
 </p>
-<div class="legend">
-<b>白话翻译：</b>给名字打分时，含"水"字根（氵、雨、冫、川、海、江、河、霖、瀚…）的字加分最高；含"金"字根（钅、刂、申、庚、白、西…）的字次之；含"木"也可以（木能疏土）；含"火/土"字根的字一律扣分。
-</div>
+<div class="legend"><b>白话：</b>含 <b>水</b> 字根（氵雨冫川海江河霖瀚…）加分最高；含 <b>金</b> 字根（钅刂申庚白西…）次之；含 <b>火/土</b> 一律扣分。</div>
 
 <h3>④ 生肖马·字根喜忌</h3>
-<p style="font-family:'PingFang SC',sans-serif;font-size:.95em">
-<b>宜：</b><span class="tag">艹（草料）</span><span class="tag">木</span><span class="tag">目</span><span class="tag">纟（马辔）</span><span class="tag">巾衣（披挂）</span><br>
-<b>忌：</b><span class="tag warn">田（耕马劳苦）</span><span class="tag warn">禾米（马不食五谷）</span><span class="tag warn">子（子午冲）</span><span class="tag warn">牛/丑（牛马难合）</span><span class="tag warn">双人字旁（一马不配双鞍）</span>
+<p class="sans" style="font-size:.92em">
+<b>宜：</b><span class="tag wood">艹</span><span class="tag wood">木</span><span class="tag">目</span><span class="tag">纟</span><span class="tag">巾衣</span><br>
+<b>忌：</b><span class="tag warn">田</span><span class="tag warn">禾米</span><span class="tag warn">子(子午冲)</span><span class="tag warn">牛/丑</span><span class="tag warn">双人字旁</span>
 </p>
 
 <h3>⑤ 家族避讳</h3>
-<p style="font-family:'PingFang SC',sans-serif;font-size:.95em">
-<b>音：</b>避"大 dà / 林 lín / 珂 kē / 思 sī / 之 zhī"同音近音<br>
-<b>形：</b>避"林"（双木）、"珂"（王字旁玉部）形近字<br>
-<b>义：</b>避与父母名字义重叠（"大林"已含"宏大、林木"之意，子名再用"宏、伟、森、楠"显赘）<br>
-<b>方言：</b>已用普通话+天津话双轨筛查不雅谐音
-</p>
+<p class="sans" style="font-size:.92em">避"大林珂思之"同音同形；避"宏伟森楠"义重；普通话+天津话双轨筛查不雅谐音。</p>
 
-<h3>⑥ 真太阳时校正说明</h3>
-<p style="font-family:'PingFang SC',sans-serif;font-size:.9em;color:var(--mute)">
-北京时以东经 120° 为基准，天津地处东经 117.2°，<b>经度时差 = (117.2−120)×4分钟 ≈ -11 分钟</b>；2026 年 6 月 10 日<b>均时差约 +1 分钟</b>（地球公转椭圆造成的真太阳与平太阳之差）。<br>
-合计：16:47 - 11 + 1 ≈ <b>16:37–16:39</b>，仍属申时（15:00–17:00），时柱"庚申"不变。这一步保证了用的是地球真实日影时间，而非行政时区时间。
-</p>
+<h3>⑥ 真太阳时校正</h3>
+<p class="sans" style="font-size:.86em;color:var(--mute)">天津东经117.2°，经度时差 (117.2-120)×4 ≈ -11min；2026/6/10 均时差 ≈ +1min；合计 16:47-10 ≈ <b>16:37</b>，仍属申时（15-17），时柱"庚申"不变。</p>
 </div>
 
-<h2 id="names">二、候选名 · 第一批 8 个</h2>
-<p style="font-family:'PingFang SC',sans-serif;color:var(--mute);font-size:.9em;margin-bottom:16px">每个名字末两字均为<b>典籍专有名词</b>（非生造组合，可在《诗经》《道德经》《史记》等独立查到）。点击展开看详情。</p>
+<h2 id="names">二、候选名（共 <span id="totalCount">—</span> 个）</h2>
 
-<details><summary><span><span class="name">陈 长 庚</span><span class="py">Chén Cháng-gēng (²/²/¹)</span></span><span><span class="badge">首推</span><button class="copy" onclick="navigator.clipboard.writeText('陈长庚 Chén Chánggēng');this.textContent='✓已复制'">复制</button></span></summary>
-<div class="body">
-<p><strong>专有名词"长庚"：</strong>太白金星之古称。黄昏现于西方曰"长庚"，黎明现于东方曰"启明"——同一颗星的两个名字。</p>
-<div class="quote">东有启明，西有长庚。<cite>——《诗经·小雅·大东》</cite></div>
-<p><strong>整体寓意：</strong>金星耀夕，光照人间——沉稳、明亮、亘古不变的方位感。</p>
-<p><strong>五行补益：</strong><span class="tag">金 ×2</span>"庚"为天干第七位西方金，叠时柱庚申金气；金能泄燥土、生壬水，调候+扶抑双合。</p>
-<div class="scoreRow"><span>音韵：阳平+阳平+阴平 ✓</span><span>字形：4+8画疏朗 ✓</span><span>重名：罕见 ★</span></div>
-</div></details>
+<div class="toolbar sans">
+<div class="tb-row">
+<label>排序</label>
+<select id="sortBy">
+<option value="score-desc">综合分 ↓</option>
+<option value="score-asc">综合分 ↑</option>
+<option value="rare-desc">稀有度 ↓</option>
+<option value="strokes-asc">总笔画 ↑</option>
+<option value="default">原始顺序</option>
+</select>
+<label>风格</label>
+<span class="chip on" data-filter="style" data-val="all">全部</span>
+<span class="chip" data-filter="style" data-val="文">偏文</span>
+<span class="chip" data-filter="style" data-val="武">偏武</span>
+<span class="chip" data-filter="style" data-val="雅">清雅</span>
+<span class="chip" data-filter="style" data-val="阔">阔大</span>
+<label style="margin-left:8px">补益</label>
+<span class="chip on" data-filter="elem" data-val="all">全部</span>
+<span class="chip" data-filter="elem" data-val="水">补水</span>
+<span class="chip" data-filter="elem" data-val="金">补金</span>
+<span class="chip" data-filter="elem" data-val="木">补木</span>
+<button id="favOnly">★ 只看收藏</button>
+<button id="exportBtn">导出 TXT</button>
+<button id="resetBtn">重置</button>
+<span class="count" id="visibleCount"></span>
+</div>
+<details class="weights"><summary>自定义评分权重（拖动可实时重排，本地浏览器记忆）</summary>
+<div class="w-grid" id="weightGrid"></div>
+</details>
+</div>
 
-<details><summary><span><span class="name">陈 河 汉</span><span class="py">Chén Hé-hàn (²/²/⁴)</span></span><button class="copy" onclick="navigator.clipboard.writeText('陈河汉 Chén Héhàn');this.textContent='✓'">复制</button></summary>
-<div class="body">
-<p><strong>专有名词"河汉"：</strong>银河之古称，亦指广阔无垠之境。</p>
-<div class="quote">迢迢牵牛星，皎皎河汉女。河汉清且浅，相去复几许。<cite>——《古诗十九首》</cite></div>
-<p><strong>整体寓意：</strong>胸怀如银河，清澈而浩瀚。</p>
-<p><strong>五行补益：</strong><span class="tag">水 ×2</span>双三点水直补调候首选，最破午月燥局。</p>
-<div class="scoreRow"><span>音韵：阳平+阳平+去声 ✓</span><span>字形：8+5画 ✓</span><span>重名：罕见 ★</span></div>
-</div></details>
-
-<details><summary><span><span class="name">陈 观 澜</span><span class="py">Chén Guān-lán (²/¹/²)</span></span><button class="copy" onclick="navigator.clipboard.writeText('陈观澜 Chén Guānlán');this.textContent='✓'">复制</button></summary>
-<div class="body">
-<p><strong>专有名词"观澜"：</strong>观水之澜以见其源，喻洞察根本。</p>
-<div class="quote">观水有术，必观其澜。日月有明，容光必照焉。<cite>——《孟子·尽心上》</cite></div>
-<p><strong>整体寓意：</strong>立于潮头而见本源，沉静中有锋芒。</p>
-<p><strong>五行补益：</strong><span class="tag">水</span><span class="tag">木</span>澜含水气，观属木助流通。</p>
-<div class="scoreRow"><span>音韵：阳平+阴平+阳平 ✓</span><span>字形：6+15画 繁简对比</span><span>重名：较少见 ★★</span></div>
-</div></details>
-
-<details><summary><span><span class="name">陈 景 行</span><span class="py">Chén Jǐng-xíng (²/³/²)</span></span><button class="copy" onclick="navigator.clipboard.writeText('陈景行 Chén Jǐngxíng');this.textContent='✓'">复制</button></summary>
-<div class="body">
-<p><strong>专有名词"景行"：</strong>大道、光明正大之行。司马迁引以赞孔子。</p>
-<div class="quote">高山仰止，景行行止。虽不能至，然心向往之。<cite>——《诗经·小雅·车舝》</cite></div>
-<p><strong>整体寓意：</strong>仰望高山，行走大道——士人风骨。</p>
-<p><strong>五行补益：</strong><span class="tag">水（流通象）</span>"行"取动象通水气；景虽含日，但用作"道路"义无火患。</p>
-<div class="scoreRow"><span>音韵：阳平+上声+阳平 ✓</span><span>字形：12+6画端方</span><span>重名：较少见 ★★</span></div>
-</div></details>
-
-<details><summary><span><span class="name">陈 鸿 钧</span><span class="py">Chén Hóng-jūn (²/²/¹)</span></span><button class="copy" onclick="navigator.clipboard.writeText('陈鸿钧 Chén Hóngjūn');this.textContent='✓'">复制</button></summary>
-<div class="body">
-<p><strong>专有名词"鸿钧"：</strong>天地造化、大道运转之喻。</p>
-<div class="quote">大钧播物，坱圠无垠。<cite>——贾谊《鵩鸟赋》</cite></div>
-<p><strong>整体寓意：</strong>天工造物，气象恢宏。</p>
-<p><strong>五行补益：</strong><span class="tag">水</span><span class="tag">金</span>鸿属水（江名），钧属金（金字旁），金水相生。</p>
-<div class="scoreRow"><span>音韵：阳平+阳平+阴平 ✓</span><span>字形：11+9画匀称</span><span>重名：罕见 ★</span></div>
-</div></details>
-
-<details><summary><span><span class="name">陈 瀚 海</span><span class="py">Chén Hàn-hǎi (²/⁴/³)</span></span><button class="copy" onclick="navigator.clipboard.writeText('陈瀚海 Chén Hànhǎi');this.textContent='✓'">复制</button></summary>
-<div class="body">
-<p><strong>专有名词"瀚海"：</strong>古地名，唐前指北方大泽，唐后指戈壁。</p>
-<div class="quote">瀚海阑干百丈冰，愁云惨淡万里凝。<cite>——岑参《白雪歌送武判官归京》</cite></div>
-<p><strong>整体寓意：</strong>胸襟如瀚海，纳万境而不溢。</p>
-<p><strong>五行补益：</strong><span class="tag">水 ×2</span>极补水。</p>
-<div class="scoreRow"><span>音韵：阳平+去声+上声 ✓</span><span>字形：19+10画偏繁</span><span>重名：较少见 ★★</span></div>
-</div></details>
-
-<details><summary><span><span class="name">陈 沧 溟</span><span class="py">Chén Cāng-míng (²/¹/²)</span></span><button class="copy" onclick="navigator.clipboard.writeText('陈沧溟 Chén Cāngmíng');this.textContent='✓'">复制</button></summary>
-<div class="body">
-<p><strong>专有名词"沧溟"：</strong>大海之古雅称。</p>
-<div class="quote">东渐于海，西被于流沙……沧溟之滨。<cite>——班固《东都赋》</cite></div>
-<p><strong>整体寓意：</strong>幽远深碧，志在天涯。</p>
-<p><strong>五行补益：</strong><span class="tag">水 ×2</span>双三点水重润。</p>
-<div class="scoreRow"><span>音韵：阳平+阴平+阳平 ✓</span><span>字形：7+13画</span><span>重名：罕见 ★</span></div>
-</div></details>
-
-<details><summary><span><span class="name">陈 知 白</span><span class="py">Chén Zhī-bái (²/¹/²)</span></span><button class="copy" onclick="navigator.clipboard.writeText('陈知白 Chén Zhībái');this.textContent='✓'">复制</button></summary>
-<div class="body">
-<p><strong>专有名词"知白"：</strong>《道德经》核心意象，"知白守黑"为道家修养至境。</p>
-<div class="quote">知其白，守其黑，为天下式。<cite>——《道德经·二十八章》</cite></div>
-<p><strong>整体寓意：</strong>洞明世事而守拙归真。</p>
-<p><strong>五行补益：</strong><span class="tag">金</span>"白"为西方金正色，"知"含矢主决断。</p>
-<div class="scoreRow"><span>音韵：阳平+阴平+阳平 ✓</span><span>字形：8+5画简净</span><span>重名：罕见 ★</span></div>
-</div></details>
+<div id="nameList"></div>
+<div id="emptyHint" class="empty" style="display:none">没有名字符合当前筛选条件。点击"重置"恢复全部。</div>
 
 <div class="recommend" id="pick">
-<h2>★ 首推：陈长庚</h2>
-<p style="font-size:1.1em;font-family:'PingFang SC',sans-serif">Chén Chánggēng · 一颗永不熄灭的金星</p>
+<h2>★ 命理首推：陈长庚</h2>
+<p class="sans" style="font-size:1.05em">Chén Chánggēng · 一颗永不熄灭的金星</p>
 <div class="reason">
-<b>命理 ★★★★★</b><span>"长庚"叠金，正应时柱"庚申"金透根；金泄燥土、生壬水之源——调候、扶抑、通关三合一，是这八个名字中唯一同时打中三个用神靶心的。</span>
-<b>典籍 ★★★★★</b><span>《诗经·小雅》正典，三千年专有名词，非生造组合。</span>
-<b>生肖 ★★★★☆</b><span>"长"含舒展奔驰意，"庚"无田午冲犯。</span>
-<b>避讳 ★★★★★</b><span>与"大林""珂""思""之"音形义零重叠。</span>
-<b>审美 ★★★★★</b><span>完全避开"梓轩浩宇"红海，识别度极高，写在简历上有压舱感而无古板气。</span>
-<b>音韵 ★★★★★</b><span>陈²长²庚¹，二平后阴平上扬，朗读不拗口。</span>
+<b>命理 ★★★★★</b><span>"长庚"叠金应时柱"庚申"，金泄燥土+生壬水，调候/扶抑/通关三合一。</span>
+<b>典籍 ★★★★★</b><span>《诗经·小雅·大东》正典，三千年专有名词。</span>
+<b>避讳 ★★★★★</b><span>与"大林/珂/思/之"零重叠。</span>
+<b>审美 ★★★★★</b><span>避开"梓轩浩宇"红海，识别度高，压舱感而无古板气。</span>
 </div>
+<p class="sans" style="margin-top:12px;font-size:.86em;color:var(--mute)">※ 你也可在上方"自定义评分"中调高你重视的维度，重排后看看自己的"心理首推"。</p>
 </div>
 
-<h2 id="rejected">三、否决名单（透明化筛选）</h2>
+<h2 id="rejected">三、否决名单（透明化）</h2>
 <div class="rejected">
-✗ <b>陈砚秋</b> · 程砚秋名讳过盛，易被识为蹭名<br>
-✗ <b>陈南山</b> · "寿比南山"+深圳南山区双重稀释，且未补水<br>
-✗ <b>陈青云</b> · "平步青云"功利感重，火土未补到调候<br>
-✗ <b>陈炎彬 / 陈烨坤</b> · 含火土字根，违背调候<br>
+✗ <b>陈砚秋</b> · 程砚秋名讳过盛<br>
+✗ <b>陈南山</b> · 寿比南山+南山区双重稀释，未补水<br>
+✗ <b>陈青云</b> · "平步青云"功利感重<br>
+✗ <b>陈炎彬/烨坤</b> · 含火土，违背调候<br>
 ✗ <b>陈思源</b> · "思"为父辈避讳字
 </div>
 
-<h2 id="glossary">四、术语速查（小白友好）</h2>
+<h2 id="glossary">四、术语速查</h2>
 <dl class="glossary">
-<dt>日主</dt><dd>八字中"日柱的天干"，代表本人。本案是戊土。</dd>
-<dt>调候用神</dt><dd>调节寒暖燥湿的关键五行——夏天热燥要水，冬天冰冷要火。</dd>
-<dt>扶抑用神</dt><dd>调节强弱平衡的五行——身太强要泄/克，身太弱要生/扶。</dd>
-<dt>身强 / 身弱</dt><dd>日主在整个八字中力量是否充沛。本案戊土"身强偏燥"。</dd>
-<dt>藏干</dt><dd>每个地支内藏的天干。如"戌"内藏戊辛丁。判断五行强弱必须计入。</dd>
-<dt>真太阳时</dt><dd>太阳真实位置决定的时间，比北京时区时间更精确，命理排盘必校正。</dd>
-<dt>三合 / 六冲</dt><dd>地支之间的吸引/排斥关系，影响生肖选字。</dd>
+<dt>日主</dt><dd>日柱天干，代表本人（本案戊土）</dd>
+<dt>调候用神</dt><dd>调寒暖燥湿——夏燥要水、冬寒要火</dd>
+<dt>扶抑用神</dt><dd>调强弱——身强要泄克、身弱要生扶</dd>
+<dt>藏干</dt><dd>地支内藏天干，判强弱必计入</dd>
+<dt>真太阳时</dt><dd>太阳实位决定的时间，命理排盘必校正</dd>
+<dt>三合六冲</dt><dd>地支吸引/排斥关系，影响生肖选字</dd>
 </dl>
 
 <div class="foot">
-本批次 8 名 · 后续将持续追加新批次<br>
-命理推演仅供参考 · 真正的好命是父母给的爱与教养<br>
-最近更新：2026.06.14
+共 <span id="totalCount2">—</span> 个候选 · 持续追加 · 最近更新 2026.06.14<br>
+命理推演仅供参考 · 真正的好命是父母给的爱与教养
 </div>
 
-</body>
-</html>
+<script>
+/* ========= 候选名数据库 ========= */
+/* dims 6 维 0-5 分：命理 典籍 生肖 避讳 审美 音韵 */
+const NAMES = [
+ {id:"chang-geng",zi:"长庚",full:"陈长庚",py:"Chén Cháng-gēng",tone:"²/²/¹",
+  styles:["阔","雅"],elems:["金","金"],strokes:[7,4,8],rare:5,
+  term:'"长庚"为太白金星之古称——黄昏现于西方曰长庚，黎明现于东方曰启明。',
+  quote:"东有启明，西有长庚。",src:"《诗经·小雅·大东》",
+  meaning:"金星耀夕，光照人间——沉稳明亮、亘古不变。",
+  bz:"叠金正应时柱庚申，金泄燥土+生壬水，调候扶抑三合一。",
+  dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"he-han",zi:"河汉",full:"陈河汉",py:"Chén Hé-hàn",tone:"²/²/⁴",
+  styles:["阔","雅"],elems:["水","水"],strokes:[7,8,5],rare:5,
+  term:'"河汉"为银河之古称，亦指广阔无垠之境。',
+  quote:"迢迢牵牛星，皎皎河汉女。",src:"《古诗十九首》",
+  meaning:"胸怀如银河，清澈而浩瀚。",
+  bz:"双三点水直补调候首选，最破午月燥局。",
+  dims:{命理:5,典籍:5,生肖:3,避讳:5,审美:5,音韵:4}},
+ {id:"guan-lan",zi:"观澜",full:"陈观澜",py:"Chén Guān-lán",tone:"²/¹/²",
+  styles:["雅","文"],elems:["木","水"],strokes:[7,6,15],rare:4,
+  term:'"观澜"——观水之澜以见其源，喻洞察根本。',
+  quote:"观水有术，必观其澜。",src:"《孟子·尽心上》",
+  meaning:"立于潮头而见本源，沉静中有锋芒。",
+  bz:"澜含水气、观属木助流通。",
+  dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"jing-xing",zi:"景行",full:"陈景行",py:"Chén Jǐng-xíng",tone:"²/³/²",
+  styles:["文","雅"],elems:["水"],strokes:[7,12,6],rare:4,
+  term:'"景行"——大道、光明正大之行。',
+  quote:"高山仰止，景行行止。",src:"《诗经·小雅·车舝》",
+  meaning:"仰望高山、行走大道——士人风骨。",
+  bz:'"行"取动象通水气；"景"用作道路义无火患。',
+  dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"hong-jun",zi:"鸿钧",full:"陈鸿钧",py:"Chén Hóng-jūn",tone:"²/²/¹",
+  styles:["阔","武"],elems:["水","金"],strokes:[7,11,9],rare:5,
+  term:'"鸿钧"——天地造化、大道运转之喻。',
+  quote:"大钧播物，坱圠无垠。",src:"贾谊《鵩鸟赋》",
+  meaning:"天工造物、气象恢宏。",
+  bz:"鸿属水(江名)+钧属金(钅)，金水相生。",
+  dims:{命理:5,典籍:4,生肖:4,避讳:5,审美:4,音韵:5}},
+ {id:"han-hai",zi:"瀚海",full:"陈瀚海",py:"Chén Hàn-hǎi",tone:"²/⁴/³",
+  styles:["阔","武"],elems:["水","水"],strokes:[7,19,10],rare:4,
+  term:'"瀚海"——古地名，唐前指北方大泽，唐后指戈壁。',
+  quote:"瀚海阑干百丈冰，愁云惨淡万里凝。",src:"岑参《白雪歌送武判官归京》",
+  meaning:"胸襟如瀚海，纳万境而不溢。",
+  bz:"双水极补，破燥首选。",
+  dims:{命理:5,典籍:4,生肖:3,避讳:5,审美:4,音韵:4}},
+ {id:"cang-ming",zi:"沧溟",full:"陈沧溟",py:"Chén Cāng-míng",tone:"²/¹/²",
+  styles:["雅","阔"],elems:["水","水"],strokes:[7,7,13],rare:5,
+  term:'"沧溟"——大海之古雅称。',
+  quote:"东渐于海，西被于流沙……沧溟之滨。",src:"班固《东都赋》",
+  meaning:"幽远深碧，志在天涯。",
+  bz:"双三点水重润，调候到位。",
+  dims:{命理:5,典籍:4,生肖:3,避讳:5,审美:5,音韵:5}},
+ {id:"zhi-bai",zi:"知白",full:"陈知白",py:"Chén Zhī-bái",tone:"²/¹/²",
+  styles:["文","雅"],elems:["金"],strokes:[7,8,5],rare:5,
+  term:'"知白"——《道德经》"知白守黑"，道家修养至境。',
+  quote:"知其白，守其黑，为天下式。",src:"《道德经·二十八章》",
+  meaning:"洞明世事而守拙归真。",
+  bz:'"白"为西方金正色，"知"含矢主决断。',
+  dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+
+ /* ============ 第二批 · 补水为主 ============ */
+ {id:"zhi-yuan",zi:"之远",full:"陈致远",py:"Chén Zhì-yuǎn",tone:"²/⁴/³",
+  styles:["文"],elems:["水"],strokes:[7,10,7],rare:3,
+  term:'"致远"——《诫子书》专有词组，淡泊明志、宁静致远。',
+  quote:"非淡泊无以明志，非宁静无以致远。",src:"诸葛亮《诫子书》",
+  meaning:"沉静方能远行。",
+  bz:"远字含辶(水流之象)，气脉绵长。",
+  dims:{命理:3,典籍:5,生肖:4,避讳:3,审美:4,音韵:5},
+  note:"※ 与父辈'之'同音存疑，已降避讳分；若无忌则推荐。"},
+ {id:"chuan-shan",zi:"川山",full:"陈川山",py:"Chén Chuān-shān",tone:"²/¹/¹",
+  styles:["阔","武"],elems:["水"],strokes:[7,3,3],rare:5,
+  term:'"川山"——山川之倒文，《山海经》《文选》多见，喻江山疆域。',
+  quote:"川山之险，国家之宝。",src:"《国语·晋语》",
+  meaning:"立于山河之间，骨骼俊朗。",
+  bz:"川为流水之象直补调候，三笔字形极简净。",
+  dims:{命理:4,典籍:4,生肖:5,避讳:5,审美:5,音韵:4}},
+ {id:"si-hai",zi:"四海",full:"陈四海",py:"Chén Sì-hǎi",tone:"²/⁴/³",
+  styles:["阔","武"],elems:["水"],strokes:[7,5,10],rare:4,
+  term:'"四海"——古指九州之外环水，亦喻天下、广纳之心。',
+  quote:"四海之内，皆兄弟也。",src:"《论语·颜渊》",
+  meaning:"心怀天下，纳百川以成器。",
+  bz:"海字三点水补调候，四海为名格局极阔。",
+  dims:{命理:5,典籍:5,生肖:3,避讳:5,审美:4,音韵:4}},
+ {id:"qi-lin",zi:"麒麟",full:"陈麒麟",py:"Chén Qí-lín",tone:"²/²/²",
+  styles:["阔","雅"],elems:["木"],strokes:[7,19,23],rare:5,
+  term:'"麒麟"——四灵之首，仁兽，孔子作《春秋》绝笔于"获麟"。',
+  quote:"麟之趾，振振公子。",src:"《诗经·周南·麟之趾》",
+  meaning:"祥瑞仁兽，承家立宗。",
+  bz:"麒麟属木助疏燥土；唯笔画极繁，书写费力。",
+  dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:4,音韵:3},
+  note:"※ 笔画 49 偏多，三声平韵略平，慎选。"},
+ {id:"qing-lian",zi:"青莲",full:"陈青莲",py:"Chén Qīng-lián",tone:"²/¹/²",
+  styles:["雅","文"],elems:["木","水"],strokes:[7,8,13],rare:4,
+  term:'"青莲"——李白号青莲居士，亦《维摩诘经》喻清净智慧。',
+  quote:"青莲居士谪仙人，酒肆藏名三十春。",src:"李白《答湖州迦叶司马问白是何人》",
+  meaning:"清冽如莲，傲骨谪仙。",
+  bz:"莲含艹(肖马食)+水，青字木气助疏土。",
+  dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:4,音韵:5}},
+ {id:"yan-bo",zi:"烟波",full:"陈烟波",py:"Chén Yān-bō",tone:"²/¹/¹",
+  styles:["雅"],elems:["水"],strokes:[7,10,8],rare:5,
+  term:'"烟波"——水气苍茫之景，崔颢、柳永名句之眼。',
+  quote:"日暮乡关何处是？烟波江上使人愁。",src:"崔颢《黄鹤楼》",
+  meaning:"水汽朦胧，诗意悠远。",
+  bz:"波字三点水补调候，烟字含火虽稍犯忌但偏旁主气象非燃烧。",
+  dims:{命理:3,典籍:5,生肖:3,避讳:5,审美:5,音韵:4},
+  note:"※ '烟'字含火，调候扣分；若取气象义可接受。"},
+ {id:"jiu-zhou",zi:"九州",full:"陈九州",py:"Chén Jiǔ-zhōu",tone:"²/³/¹",
+  styles:["阔","武"],elems:["水"],strokes:[7,2,6],rare:4,
+  term:'"九州"——华夏疆域之古称，《尚书·禹贡》分天下为九州。',
+  quote:"九州生气恃风雷，万马齐喑究可哀。",src:"龚自珍《己亥杂诗》",
+  meaning:"立于华夏，志在天下。",
+  bz:"州字三点(古为水中陆)助水气；九州格局阔大。",
+  dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:4,音韵:4}},
+ {id:"bei-ming",zi:"北溟",full:"陈北溟",py:"Chén Běi-míng",tone:"²/³/²",
+  styles:["阔","武"],elems:["水","水"],strokes:[7,5,13],rare:5,
+  term:'"北溟"——《庄子·逍遥游》开篇之地，鲲鹏所化处。',
+  quote:"北冥有鱼，其名为鲲。鲲之大，不知其几千里也。",src:"《庄子·逍遥游》",
+  meaning:"鲲鹏所出之渊，志在万里。",
+  bz:"双水极补，北方水正位；庄学气象阔大。",
+  dims:{命理:5,典籍:5,生肖:3,避讳:5,审美:5,音韵:5}},
+ {id:"jin-shu",zi:"今述",full:"陈今述",py:"Chén Jīn-shù",tone:"²/¹/⁴",
+  styles:["文"],elems:["水"],strokes:[7,4,8],rare:5,
+  term:'"今述"——《论语·述而》"述而不作，信而好古"，承古开新之意。',
+  quote:"述而不作，信而好古。",src:"《论语·述而》",
+  meaning:"述古以开今，谦而有学。",
+  bz:"述含辶水流之象，今字简净。",
+  dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:4,音韵:4}},
+ {id:"shu-lu",zi:"叔陆",full:"陈叔陆",py:"Chén Shū-lù",tone:"²/¹/⁴",
+  styles:["文"],elems:["水"],strokes:[7,8,11],rare:5,
+  term:'"陆"为汉地之高平，"叔"古指排行、亦"伯仲叔季"之雅。',
+  quote:"高平曰陆。",src:"《尔雅·释地》",
+  meaning:"踏地为陆，谦谨持重。",
+  bz:"陆含阝(山阜)与水之高地义；通土而不燥。",
+  dims:{命理:3,典籍:4,生肖:4,避讳:5,审美:4,音韵:4},
+  note:"※ '叔'字现代偏冷，仅作冷门备选。"}
+];
+
+/* ========= 命理评分维度 + 默认权重 ========= */
+const DIMS = ["命理","典籍","生肖","避讳","审美","音韵"];
+const DEFAULT_W = {命理:30,典籍:15,生肖:10,避讳:15,审美:15,音韵:15};
+
+/* ========= 状态 ========= */
+const STORAGE_KEY = "chen-naming-state-v1";
+const state = Object.assign({weights:{...DEFAULT_W},favs:{},sortBy:"score-desc",style:"all",elem:"all",favOnly:false}, JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"));
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+
+/* ========= 工具 ========= */
+function score(n){
+  const w=state.weights, sumW=Object.values(w).reduce((a,b)=>a+b,0)||1;
+  let s=0; DIMS.forEach(d=>s+=(n.dims[d]||0)*(w[d]||0));
+  return Math.round(s/sumW*20); /* 0-100 */
+}
+function stars(v){return "★".repeat(v)+'<i>'+"★".repeat(5-v)+'</i>'}
+function totalStrokes(n){return n.strokes.reduce((a,b)=>a+b,0)}
+
+/* ========= 渲染 ========= */
+const list=document.getElementById("nameList");
+const totalEl=document.getElementById("totalCount"), totalEl2=document.getElementById("totalCount2");
+const visEl=document.getElementById("visibleCount"), emptyEl=document.getElementById("emptyHint");
+
+function render(){
+  let arr = NAMES.map(n=>({...n,_score:score(n)}));
+  if(state.style!=="all") arr=arr.filter(n=>n.styles.includes(state.style));
+  if(state.elem!=="all") arr=arr.filter(n=>n.elems.includes(state.elem));
+  if(state.favOnly) arr=arr.filter(n=>state.favs[n.id]);
+  switch(state.sortBy){
+    case "score-desc":arr.sort((a,b)=>b._score-a._score);break;
+    case "score-asc":arr.sort((a,b)=>a._score-b._score);break;
+    case "rare-desc":arr.sort((a,b)=>b.rare-a.rare);break;
+    case "strokes-asc":arr.sort((a,b)=>totalStrokes(a)-totalStrokes(b));break;
+  }
+  list.innerHTML=arr.map(n=>cardHtml(n)).join("");
+  totalEl.textContent=NAMES.length; totalEl2.textContent=NAMES.length;
+  visEl.textContent=`显示 ${arr.length} / ${NAMES.length}`;
+  emptyEl.style.display=arr.length?"none":"block";
+  /* bind copy & fav */
+  list.querySelectorAll(".copy").forEach(b=>b.onclick=e=>{
+    const t=b.dataset.t;navigator.clipboard.writeText(t);b.textContent="✓";setTimeout(()=>b.textContent="复制",1500);e.stopPropagation();e.preventDefault();
+  });
+  list.querySelectorAll(".nc-fav").forEach(b=>b.onclick=e=>{
+    const id=b.dataset.id;state.favs[id]=!state.favs[id];save();render();e.stopPropagation();e.preventDefault();
+  });
+}
+
+function cardHtml(n){
+  const elemTags = n.elems.map(e=>{
+    const cls={水:"water",金:"metal",木:"wood",火:"fire",土:"earth"}[e]||"";
+    return `<span class="tag ${cls}">补${e}</span>`;
+  }).join("");
+  const styleTags = n.styles.map(s=>`<span class="tag">${s}</span>`).join("");
+  const note = n.note?`<p class="sans" style="color:var(--mute);font-size:.84em">${n.note}</p>`:"";
+  const dims = DIMS.map(d=>`<div class="dim"><span class="dim-l">${d}</span><span class="dim-s">${stars(n.dims[d]||0)}</span></div>`).join("");
+  return `
+<details class="namecard" data-id="${n.id}">
+<summary>
+  <span class="nc-name">${n.full}</span>
+  <span class="nc-py">${n.py} (${n.tone})</span>
+  <span class="nc-tags">${elemTags}${styleTags}</span>
+  <span class="nc-score">${n._score}分</span>
+  <button class="nc-fav ${state.favs[n.id]?'on':''}" data-id="${n.id}" title="收藏">★</button>
+  <button class="copy" data-t="${n.full} ${n.py}">复制</button>
+</summary>
+<div class="nc-body">
+<p><strong>专有名词「${n.zi}」：</strong>${n.term}</p>
+<div class="quote">${n.quote}<cite>——${n.src}</cite></div>
+<p><strong>整体寓意：</strong>${n.meaning}</p>
+<p><strong>八字契合：</strong>${n.bz}</p>
+<div class="dim-grid">${dims}</div>
+<p class="sans" style="font-size:.84em;color:var(--mute)">总笔画 ${totalStrokes(n)} · 稀有度 ${"★".repeat(n.rare)} · 综合分 <b style="color:var(--gold)">${n._score}</b></p>
+${note}
+</div>
+</details>`;
+}
+
+/* ========= 权重滑杆 ========= */
+const wg=document.getElementById("weightGrid");
+wg.innerHTML=DIMS.map(d=>`<label class="w-row"><span>${d}</span><input type="range" min="0" max="50" value="${state.weights[d]}" data-d="${d}"><span class="v" data-vd="${d}">${state.weights[d]}</span></label>`).join("");
+wg.querySelectorAll("input[type=range]").forEach(r=>{
+  r.oninput=()=>{const d=r.dataset.d;state.weights[d]=+r.value;document.querySelector(`[data-vd="${d}"]`).textContent=r.value;save();render();}
+});
+
+/* ========= 工具栏交互 ========= */
+document.querySelectorAll(".chip").forEach(c=>{
+  c.onclick=()=>{
+    const f=c.dataset.filter;
+    document.querySelectorAll(`.chip[data-filter="${f}"]`).forEach(x=>x.classList.remove("on"));
+    c.classList.add("on");
+    state[f==="style"?"style":"elem"]=c.dataset.val;save();render();
+  };
+});
+document.getElementById("sortBy").onchange=e=>{state.sortBy=e.target.value;save();render();};
+document.getElementById("sortBy").value=state.sortBy;
+document.getElementById("favOnly").onclick=()=>{state.favOnly=!state.favOnly;document.getElementById("favOnly").style.background=state.favOnly?"var(--gold)":"";document.getElementById("favOnly").style.color=state.favOnly?"#fff":"";save();render();};
+if(state.favOnly){const b=document.getElementById("favOnly");b.style.background="var(--gold)";b.style.color="#fff";}
+document.getElementById("resetBtn").onclick=()=>{
+  Object.assign(state,{weights:{...DEFAULT_W},sortBy:"score-desc",style:"all",elem:"all",favOnly:false});
+  save();location.reload();
+};
+document.getElementById("exportBtn").onclick=()=>{
+  const arr=NAMES.map(n=>({...n,_score:score(n)})).sort((a,b)=>b._score-a._score);
+  const txt=arr.map(n=>`${n.full}\t${n.py}\t综合${n._score}\t稀有${n.rare}\t${n.styles.join("/")}\t${n.meaning}`).join("\n");
+  const blob=new Blob(["陈姓男孩起名候选\n姓名\t拼音\t综合分\t稀有度\t风格\t寓意\n"+txt],{type:"text/plain;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="陈姓候选名.txt";a.click();
+};
+
+/* 还原 chip 选中状态 */
+document.querySelectorAll(`.chip[data-filter="style"]`).forEach(c=>c.classList.toggle("on",c.dataset.val===state.style));
+document.querySelectorAll(`.chip[data-filter="elem"]`).forEach(c=>c.classList.toggle("on",c.dataset.val===state.elem));
+
+render();
+</script>
+</body></html>
