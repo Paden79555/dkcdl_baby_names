@@ -104,6 +104,42 @@ details.weights summary::before{content:"⚙ ";color:var(--gold)}
 <h1>陈 氏 麟 儿 命 名 录</h1>
 <div class="sub">公历 2026 年 6 月 10 日 16:47 · 天津 · 真太阳时校正 -8 分钟</div>
 
+<div class="bz-card" id="myShortlist" style="border:2px solid var(--gold);background:linear-gradient(135deg,rgba(184,137,58,.06),transparent);margin-top:14px">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+<h3 style="margin:0">★ 全家投票 / 我的候选</h3>
+<div class="sans" style="font-size:.82em;color:var(--mute)">
+<span id="syncStatus">☁ 待同步</span> ·
+<a href="javascript:promptNickname()" style="color:var(--accent);text-decoration:none">👤 <span id="nickDisplay">未设置昵称</span></a>
+</div>
+</div>
+<div id="shortlistBox" class="sans" style="font-size:.92em;color:var(--mute)">尚未收藏。点击任意名字右侧的 ★ 加入候选。</div>
+<details style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px" id="customAdd">
+<summary class="sans" style="cursor:pointer;color:var(--accent);font-size:.92em;list-style:none">＋ 自定义添加我自己想到的名字</summary>
+<div class="sans" style="font-size:.88em;margin-top:10px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+<input id="ca-zi" placeholder="名字（如：长庚 / 安洲）" maxlength="2" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
+<input id="ca-py" placeholder="拼音（可选，如：Cháng-gēng）" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
+</div>
+<input id="ca-meaning" placeholder="寓意备注（可选）" style="width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit;margin-bottom:8px">
+<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+<span style="color:var(--mute);font-size:.85em">补益：</span>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="水"> 补水</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="金"> 补金</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="木"> 补木</label>
+<span style="color:var(--mute);font-size:.85em;margin-left:8px">风格：</span>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="阔"> 阔</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="文"> 文</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="武"> 武</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="雅"> 雅</label>
+<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="仙"> 仙</label>
+</div>
+<button id="ca-add" class="copy" style="padding:6px 14px">＋ 加入候选并自动收藏</button>
+<span id="ca-msg" style="margin-left:10px;color:var(--mute);font-size:.85em"></span>
+<p style="font-size:.8em;color:var(--mute);margin-top:8px">※ 自定义名字会用六维默认 3 星评分（中性），自动加 ★ 收藏并标记"自"角标。可随时通过点 ★ 取消。</p>
+</div>
+</details>
+</div>
+
 <h2 id="bazi">一、八字与五行总评</h2>
 <div class="bz-card">
 <div class="tldr"><b>一句话结论：</b>这孩子像盛夏正午晒得发烫的一片黄土地——结实、可靠、阳气足，但<b>缺水滋润</b>。起名"补水为主、配金为辅"，最忌再加"火、土"字根。</div>
@@ -198,42 +234,6 @@ details.weights summary::before{content:"⚙ ";color:var(--gold)}
 <b>审美 ★★★★★</b><span>避开"梓轩浩宇"红海，识别度高，压舱感而无古板气。</span>
 </div>
 <p class="sans" style="margin-top:12px;font-size:.86em;color:var(--mute)">※ 你也可在上方"自定义评分"中调高你重视的维度，重排后看看自己的"心理首推"。</p>
-</div>
-
-<div class="bz-card" id="myShortlist" style="border:2px solid var(--gold);background:linear-gradient(135deg,rgba(184,137,58,.06),transparent)">
-<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-<h3 style="margin:0">★ 全家投票 / 我的候选</h3>
-<div class="sans" style="font-size:.82em;color:var(--mute)">
-<span id="syncStatus">☁ 待同步</span> ·
-<a href="javascript:promptNickname()" style="color:var(--accent);text-decoration:none">👤 <span id="nickDisplay">未设置昵称</span></a>
-</div>
-</div>
-<div id="shortlistBox" class="sans" style="font-size:.92em;color:var(--mute)">尚未收藏。点击任意名字右侧的 ★ 加入候选。</div>
-<details style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px" id="customAdd">
-<summary class="sans" style="cursor:pointer;color:var(--accent);font-size:.92em;list-style:none">＋ 自定义添加我自己想到的名字</summary>
-<div class="sans" style="font-size:.88em;margin-top:10px">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-<input id="ca-zi" placeholder="名字（如：长庚 / 安洲）" maxlength="2" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
-<input id="ca-py" placeholder="拼音（可选，如：Cháng-gēng）" style="padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit">
-</div>
-<input id="ca-meaning" placeholder="寓意备注（可选）" style="width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit;margin-bottom:8px">
-<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
-<span style="color:var(--mute);font-size:.85em">补益：</span>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="水"> 补水</label>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="金"> 补金</label>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-elem="木"> 补木</label>
-<span style="color:var(--mute);font-size:.85em;margin-left:8px">风格：</span>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="阔"> 阔</label>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="文"> 文</label>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="武"> 武</label>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="雅"> 雅</label>
-<label style="font-size:.85em;display:inline-flex;align-items:center;gap:3px"><input type="checkbox" data-style="仙"> 仙</label>
-</div>
-<button id="ca-add" class="copy" style="padding:6px 14px">＋ 加入候选并自动收藏</button>
-<span id="ca-msg" style="margin-left:10px;color:var(--mute);font-size:.85em"></span>
-<p style="font-size:.8em;color:var(--mute);margin-top:8px">※ 自定义名字会用六维默认 3 星评分（中性），自动加 ★ 收藏并标记"自"角标。可随时通过点 ★ 取消。</p>
-</div>
-</details>
 </div>
 
 <h2 id="rejected">三、否决名单（透明化）</h2>
@@ -515,7 +515,66 @@ const NAMES = [
   quote:"逝者如斯夫，不舍昼夜。",src:"《论语·子罕》",
   meaning:"靖以安川，川以载志——刚柔并济。",
   bz:"靖字青+立属金气助决断；川字三笔水流补调候。",
-  dims:{命理:5,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}}
+  dims:{命理:5,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}},
+
+ /* ============ 第五批 · 五十条新增（典籍·补水/金/木）============ */
+ /* 水部 (20) */
+ {id:"zhi-jin",zi:"知津",full:"陈知津",py:"Chén Zhī-jīn",tone:"²/¹/¹",styles:["文","雅"],elems:["水"],strokes:[7,8,9],rare:5,term:'"知津"——《论语·微子》子路问津，喻知途径、识大局。',quote:"使子路问津焉。",src:"《论语·微子》",meaning:"识津渡之要，知行止之机。",bz:"津字三点水补调候，知含矢主决断。",dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"wei-zhou",zi:"维舟",full:"陈维舟",py:"Chén Wéi-zhōu",tone:"²/²/¹",styles:["雅","仙"],elems:["水"],strokes:[7,11,6],rare:5,term:'"维舟"——系舟，《楚辞》及杜诗常见，喻泊定之心。',quote:"维舟登山,望长江水。",src:"杜甫《建都》",meaning:"舟系长川，志泊中流。",bz:"舟行水上，维(纟)合肖马喜，水气贯通。",dims:{命理:4,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"jiang-zhou",zi:"江洲",full:"陈江洲",py:"Chén Jiāng-zhōu",tone:"²/¹/¹",styles:["阔","雅"],elems:["水","水"],strokes:[7,6,9],rare:4,term:'"江洲"——大江中之陆，《滕王阁序》《琵琶行》皆有"江州"之境。',quote:"江州司马青衫湿。",src:"白居易《琵琶行》",meaning:"立江中之洲，独立而通达。",bz:"江+洲双三点水极补调候。",dims:{命理:5,典籍:4,生肖:5,避讳:5,审美:4,音韵:4}},
+ {id:"hai-ruo",zi:"海若",full:"陈海若",py:"Chén Hǎi-ruò",tone:"²/³/⁴",styles:["阔","仙"],elems:["水"],strokes:[7,10,8],rare:5,term:'"海若"——北海之神，《庄子·秋水》"望洋向若而叹"。',quote:"望洋向若而叹。",src:"《庄子·秋水》",meaning:"涵纳百川，谦于天地。",bz:"海三点水补调候；若(艹)肖马所喜。",dims:{命理:5,典籍:5,生肖:5,避讳:5,审美:5,音韵:4}},
+ {id:"qing-yun",zi:"卿云",full:"陈卿云",py:"Chén Qīng-yún",tone:"²/¹/²",styles:["仙","雅"],elems:["水"],strokes:[7,10,4],rare:4,term:'"卿云"——五彩瑞云，《尚书大传》舜帝禅让时所现。',quote:"卿云烂兮，糺缦缦兮。",src:"《尚书大传·虞夏传》",meaning:"祥云缦布，瑞气盈天。",bz:"云属水气,瑞祥之兆。",dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"shi-yu",zi:"时雨",full:"陈时雨",py:"Chén Shí-yǔ",tone:"²/²/³",styles:["雅","文"],elems:["水"],strokes:[7,7,8],rare:5,term:'"时雨"——应时之雨，《孟子》"有如时雨化之者"，喻润物之教。',quote:"有如时雨化之者。",src:"《孟子·尽心上》",meaning:"如时雨润物，化育有方。",bz:"雨字部首直补水气，时字日月之运。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"jiang-han",zi:"江汉",full:"陈江汉",py:"Chén Jiāng-hàn",tone:"²/¹/⁴",styles:["阔","武"],elems:["水","水"],strokes:[7,6,5],rare:4,term:'"江汉"——长江汉水，《诗经·大雅·江汉》篇名，喻王化所及。',quote:"江汉浮浮，武夫滔滔。",src:"《诗经·大雅·江汉》",meaning:"浩浩江汉，王道恢宏。",bz:"双三点水极补调候。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:4,音韵:4}},
+ {id:"yuan-xiang",zi:"沅湘",full:"陈沅湘",py:"Chén Yuán-xiāng",tone:"²/²/¹",styles:["雅","仙"],elems:["水","水"],strokes:[7,7,12],rare:5,term:'"沅湘"——沅水湘水，《楚辞》屈子流连之地。',quote:"沅有芷兮澧有兰，思公子兮未敢言。",src:"《楚辞·九歌·湘夫人》",meaning:"楚水之灵，幽芳自远。",bz:"双三点水极补，楚辞气韵清远。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"cang-lang",zi:"沧浪",full:"陈沧浪",py:"Chén Cāng-láng",tone:"²/¹/²",styles:["雅","仙"],elems:["水","水"],strokes:[7,7,10],rare:5,term:'"沧浪"——清水之名，《孟子》《楚辞·渔父》"沧浪之水清兮"。',quote:"沧浪之水清兮，可以濯吾缨。",src:"《楚辞·渔父》",meaning:"濯缨之志，世清而立。",bz:"双三点水重润，调候极佳。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"lin-chuan",zi:"临川",full:"陈临川",py:"Chén Lín-chuān",tone:"²/²/¹",styles:["雅","文"],elems:["水"],strokes:[7,9,3],rare:5,term:'"临川"——临水之地，《孟子》"临川之鱼"+王安石别号。',quote:"临川之鱼，不忘乎江湖。",src:"《孟子·告子下》义化",meaning:"临水观流，志通江湖。",bz:"川字流水补调候。",dims:{命理:4,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"ji-ji",zi:"既济",full:"陈既济",py:"Chén Jì-jì",tone:"²/⁴/⁴",styles:["文","雅"],elems:["水"],strokes:[7,9,9],rare:5,term:'"既济"——《周易》第六十三卦，水火相济、事已成之象。',quote:"既济，亨小，利贞。",src:"《周易·既济》",meaning:"功已济、事乃成，水火相济。",bz:"济字三点水补调候，周易吉卦。",dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:5,音韵:3},note:"※ 双去声音调略闷，朗读需顿挫。"},
+ {id:"she-chuan",zi:"涉川",full:"陈涉川",py:"Chén Shè-chuān",tone:"²/⁴/¹",styles:["武","雅"],elems:["水","水"],strokes:[7,10,3],rare:5,term:'"涉川"——《周易》"利涉大川"，喻渡难成事。',quote:"利涉大川，往有功也。",src:"《周易·益卦》",meaning:"涉险渡川，行而有功。",bz:"涉(氵)+川双水补调候。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:4,音韵:4}},
+ {id:"yu-yi",zi:"浴沂",full:"陈浴沂",py:"Chén Yù-yí",tone:"²/⁴/²",styles:["雅","仙"],elems:["水","水"],strokes:[7,10,7],rare:5,term:'"浴沂"——《论语·先进》曾点之志，"浴乎沂、风乎舞雩"之乐。',quote:"莫春者，春服既成⋯浴乎沂，风乎舞雩。",src:"《论语·先进》",meaning:"春日浴沂，乐在闲适。",bz:"双三点水补调候，曾点气象。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"zai-chuan",zi:"在川",full:"陈在川",py:"Chén Zài-chuān",tone:"²/⁴/¹",styles:["文","雅"],elems:["水"],strokes:[7,6,3],rare:5,term:'"在川"——《论语·子罕》"子在川上曰：逝者如斯夫"。',quote:"子在川上曰：逝者如斯夫，不舍昼夜。",src:"《论语·子罕》",meaning:"立于川上，知时如水。",bz:"川字流水补调候。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:4,音韵:4}},
+ {id:"wang-shu",zi:"望舒",full:"陈望舒",py:"Chén Wàng-shū",tone:"²/⁴/¹",styles:["仙","雅"],elems:["水"],strokes:[7,11,12],rare:4,term:'"望舒"——为月驾车之神，《楚辞·离骚》"前望舒使先驱兮"。',quote:"前望舒使先驱兮，后飞廉使奔属。",src:"《楚辞·离骚》",meaning:"月御先驱，光照前路。",bz:"舒(舍+予)含纟意肖马喜；月主水气。",dims:{命理:3,典籍:5,生肖:5,避讳:5,审美:5,音韵:4}},
+ {id:"jiang-yue",zi:"江月",full:"陈江月",py:"Chén Jiāng-yuè",tone:"²/¹/⁴",styles:["仙","雅"],elems:["水"],strokes:[7,6,4],rare:4,term:'"江月"——《春江花月夜》眼，亦苏轼"江上之清风、与山间之明月"之境。',quote:"江畔何人初见月，江月何年初照人。",src:"张若虚《春江花月夜》",meaning:"江月千古，澄澈如初。",bz:"江字三点水补调候。",dims:{命理:4,典籍:4,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"yun-chuan",zi:"沄川",full:"陈沄川",py:"Chén Yún-chuān",tone:"²/²/¹",styles:["雅","仙"],elems:["水","水"],strokes:[7,7,3],rare:5,term:'"沄川"——回旋之川，《文选》"沄沄逝水，历古今而无穷"。',quote:"沄沄逝水，历古今而无穷。",src:"《文选·王褒·四子讲德论》",meaning:"川流不息，光景无穷。",bz:"沄(氵)+川双水补调候。",dims:{命理:5,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"zi-chuan",zi:"子川",full:"陈子川",py:"Chén Zǐ-chuān",tone:"²/³/¹",styles:["文","雅"],elems:["水"],strokes:[7,3,3],rare:5,term:'"子川"——《论语》"子在川上"之缩影，亦古人字号常见。',quote:"子在川上曰：逝者如斯夫。",src:"《论语·子罕》",meaning:"如川之逝，惜时而行。",bz:"川字流水补调候，简净有力。",dims:{命理:4,典籍:4,生肖:4,避讳:5,审美:5,音韵:4},note:"※ '子'与生肖马有'子午冲'之忌；姓名学多取贤人意化解，仍存争议。"},
+ {id:"he-kun",zi:"河鲲",full:"陈河鲲",py:"Chén Hé-kūn",tone:"²/²/¹",styles:["阔","仙"],elems:["水","水"],strokes:[7,8,18],rare:5,term:'"河鲲"——大河之鲲，《庄子》"北冥有鱼，其名为鲲"延义。',quote:"鲲之大，不知其几千里也；化而为鸟，其名为鹏。",src:"《庄子·逍遥游》",meaning:"潜河之鲲，志在抟扶摇。",bz:"双三点水补调候，鲲鱼亦水属。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:4,音韵:4}},
+ {id:"yan-jiang",zi:"烟江",full:"陈烟江",py:"Chén Yān-jiāng",tone:"²/¹/¹",styles:["雅","仙"],elems:["水"],strokes:[7,10,6],rare:5,term:'"烟江"——苏轼"烟江叠嶂"，王诜画名。',quote:"江上愁心千叠山，浮空积翠如云烟。",src:"苏轼《书王定国所藏烟江叠嶂图》",meaning:"江烟浩渺，胸中丘壑。",bz:"江字三点水补调候；烟字'因'非火部首主气象。",dims:{命理:3,典籍:4,生肖:4,避讳:5,审美:5,音韵:4},note:"※ '烟'字俗解含火，命理稍扣分，取气象义可受。"},
+
+ /* 金部 (10) */
+ {id:"yu-heng",zi:"玉衡",full:"陈玉衡",py:"Chén Yù-héng",tone:"²/⁴/²",styles:["阔","武"],elems:["金"],strokes:[7,5,16],rare:4,term:'"玉衡"——北斗七星之第五星，亦古天文仪"璇玑玉衡"。',quote:"在璇玑玉衡，以齐七政。",src:"《尚书·舜典》",meaning:"星枢居中，权衡天下。",bz:"玉为金属（古五行玉归金），衡有持守之义。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"huai-yu",zi:"怀玉",full:"陈怀玉",py:"Chén Huái-yù",tone:"²/²/⁴",styles:["文","雅"],elems:["金"],strokes:[7,7,5],rare:4,term:'"怀玉"——《老子》"圣人被褐而怀玉"，喻外朴内华。',quote:"知我者希，则我者贵。是以圣人被褐而怀玉。",src:"《道德经·七十章》",meaning:"外朴内华，藏璞守真。",bz:"玉属金，怀字心部沉静。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"zhang-fu",zi:"章甫",full:"陈章甫",py:"Chén Zhāng-fǔ",tone:"²/¹/³",styles:["文","雅"],elems:["金"],strokes:[7,11,7],rare:5,term:'"章甫"——殷商礼冠，《论语》"端章甫，愿为小相焉"。',quote:"宗庙之事，如会同，端章甫，愿为小相焉。",src:"《论语·先进》",meaning:"礼冠在身，小相之愿。",bz:"章字立部正气，甫字寸合规矩。",dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"mu-duo",zi:"木铎",full:"陈木铎",py:"Chén Mù-duó",tone:"²/⁴/²",styles:["文","武"],elems:["金","木"],strokes:[7,4,10],rare:5,term:'"木铎"——古代施政教时所用木舌金铃，《论语》"天将以夫子为木铎"。',quote:"天下之无道也久矣，天将以夫子为木铎。",src:"《论语·八佾》",meaning:"鸣世警人，承教启后。",bz:"木+铎(钅)，木金相济通流。",dims:{命理:5,典籍:5,生肖:5,避讳:5,审美:4,音韵:4}},
+ {id:"xi-cheng",zi:"西成",full:"陈西成",py:"Chén Xī-chéng",tone:"²/¹/²",styles:["阔","武"],elems:["金"],strokes:[7,6,6],rare:5,term:'"西成"——秋熟之候，《尚书·尧典》"平秩西成"。',quote:"分命和仲，宅西，曰昧谷，寅饯纳日，平秩西成。",src:"《尚书·尧典》",meaning:"秋金有成，谷物归仓。",bz:"西为金正方，成戈金气。",dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:4,音韵:5}},
+ {id:"zhou-han",zi:"周翰",full:"陈周翰",py:"Chén Zhōu-hàn",tone:"²/¹/⁴",styles:["阔","文"],elems:["金"],strokes:[7,8,16],rare:5,term:'"周翰"——周朝之栋梁，《诗经·崧高》"维周之翰，四国于蕃"。',quote:"维申及甫，维周之翰。四国于蕃，四方于宣。",src:"《诗经·大雅·崧高》",meaning:"国之栋翰，藩屏四方。",bz:"翰字羽部清逸，周字承宗。",dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"bang-yan",zi:"邦彦",full:"陈邦彦",py:"Chén Bāng-yàn",tone:"²/¹/⁴",styles:["文","雅"],elems:["金"],strokes:[7,6,9],rare:5,term:'"邦彦"——一邦之贤俊，《诗经·郑风》"彼其之子，邦之彦兮"。',quote:"彼其之子，邦之彦兮。",src:"《诗经·郑风·羔裘》",meaning:"一邦之俊，文采斐然。",bz:"彦字三撇有文采，邦字阝(山阜)。",dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"ming-qiu",zi:"鸣球",full:"陈鸣球",py:"Chén Míng-qiú",tone:"²/²/²",styles:["雅","武"],elems:["金"],strokes:[7,8,11],rare:5,term:'"鸣球"——古代玉磬之乐，《尚书·益稷》"戛击鸣球"。',quote:"戛击鸣球，搏拊琴瑟以咏。",src:"《尚书·益稷》",meaning:"玉磬之声，雅乐和鸣。",bz:"球(玉)属金，鸣字鸟+口生肖喜。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:4,音韵:3},note:"※ 三阳平略平，朗读需顿挫。"},
+ {id:"yu-yu",zi:"玉宇",full:"陈玉宇",py:"Chén Yù-yǔ",tone:"²/⁴/³",styles:["阔","仙"],elems:["金"],strokes:[7,5,6],rare:4,term:'"玉宇"——天上宫阙，苏轼"我欲乘风归去，又恐琼楼玉宇"。',quote:"我欲乘风归去，又恐琼楼玉宇，高处不胜寒。",src:"苏轼《水调歌头》",meaning:"天阙清辉，志在云霄。",bz:"玉属金，宇字宀部稳定。",dims:{命理:4,典籍:4,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"shang-song",zi:"商颂",full:"陈商颂",py:"Chén Shāng-sòng",tone:"²/¹/⁴",styles:["阔","武"],elems:["金"],strokes:[7,11,13],rare:5,term:'"商颂"——《诗经》三颂之一，殷商宗庙乐歌。',quote:"猗与那与，置我鞉鼓。",src:"《诗经·商颂·那》",meaning:"承商之颂，宗庙清音。",bz:"商字属金正音，颂字页部沉稳。",dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:4,音韵:4}},
+
+ /* 木/草部 (10) */
+ {id:"jia-shu",zi:"嘉树",full:"陈嘉树",py:"Chén Jiā-shù",tone:"²/¹/⁴",styles:["雅","文"],elems:["木"],strokes:[7,14,9],rare:5,term:'"嘉树"——美好之树，《楚辞·橘颂》"后皇嘉树，橘徕服兮"。',quote:"后皇嘉树，橘徕服兮。受命不迁，生南国兮。",src:"《楚辞·九章·橘颂》",meaning:"嘉木立南国，根固志坚。",bz:"树字木部疏燥土，嘉字加+口。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"tang-di",zi:"棠棣",full:"陈棠棣",py:"Chén Táng-dì",tone:"²/²/⁴",styles:["雅","文"],elems:["木","木"],strokes:[7,12,12],rare:5,term:'"棠棣"——《诗经·小雅·常棣》兄弟和睦之喻。',quote:"棠棣之华，鄂不韡韡。凡今之人，莫如兄弟。",src:"《诗经·小雅·常棣》",meaning:"棠棣华开，兄弟敦睦。",bz:"双木疏燥土，肖马得草料。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:4,音韵:4}},
+ {id:"du-ruo",zi:"杜若",full:"陈杜若",py:"Chén Dù-ruò",tone:"²/⁴/⁴",styles:["雅","仙"],elems:["木"],strokes:[7,7,8],rare:5,term:'"杜若"——香草名，《楚辞·九歌》"采芳洲兮杜若"。',quote:"采芳洲兮杜若，将以遗兮下女。",src:"《楚辞·九歌·湘君》",meaning:"幽芳自远，洁身以遗。",bz:"杜(木)+若(艹)双补木气，肖马所喜。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:5,音韵:3},note:"※ 双去声音调略闷。"},
+ {id:"xiu-zhu",zi:"修竹",full:"陈修竹",py:"Chén Xiū-zhú",tone:"²/¹/²",styles:["雅","文"],elems:["木"],strokes:[7,9,6],rare:4,term:'"修竹"——长竹，《兰亭集序》"茂林修竹"。',quote:"此地有崇山峻岭，茂林修竹。",src:"王羲之《兰亭集序》",meaning:"修竹劲节，雅士之姿。",bz:"竹(⺮)木气疏燥土。",dims:{命理:4,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"lan-ting",zi:"兰亭",full:"陈兰亭",py:"Chén Lán-tíng",tone:"²/²/²",styles:["雅","仙"],elems:["木"],strokes:[7,5,9],rare:4,term:'"兰亭"——王羲之雅集之所，"兰亭序"千古第一行书。',quote:"暮春之初，会于会稽山阴之兰亭。",src:"王羲之《兰亭集序》",meaning:"兰亭雅集，文心浩渺。",bz:"兰(艹)肖马食，亭字稳定。",dims:{命理:4,典籍:4,生肖:5,避讳:5,审美:5,音韵:3},note:"※ 三阳平略平。"},
+ {id:"wei-rui",zi:"葳蕤",full:"陈葳蕤",py:"Chén Wēi-ruí",tone:"²/¹/²",styles:["雅","仙"],elems:["木"],strokes:[7,12,15],rare:5,term:'"葳蕤"——草木茂盛之貌，《古诗十九首》"兰泽多芳草，采之欲遗谁"延义。',quote:"兰若生春阳，涉冬犹盛滋。葳蕤吐芬馥。",src:"《古诗十九首》拟句",meaning:"草木葳蕤，生意盎然。",bz:"双草字头肖马大喜，木气疏土。",dims:{命理:4,典籍:4,生肖:5,避讳:5,审美:5,音韵:5},note:"※ 笔画偏繁，书写费力。"},
+ {id:"cang-wu",zi:"苍梧",full:"陈苍梧",py:"Chén Cāng-wú",tone:"²/¹/²",styles:["阔","仙"],elems:["木"],strokes:[7,7,11],rare:5,term:'"苍梧"——舜葬之地，《楚辞·离骚》"济沅湘以南征兮，就重华而陈词"延义之南国。',quote:"朝发轫于苍梧兮，夕余至乎县圃。",src:"《楚辞·离骚》",meaning:"南国苍梧，圣迹所在。",bz:"苍(艹)+梧(木)双木补疏土。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"heng-zhi",zi:"蘅芷",full:"陈蘅芷",py:"Chén Héng-zhǐ",tone:"²/²/³",styles:["雅","仙"],elems:["木","木"],strokes:[7,19,7],rare:5,term:'"蘅芷"——杜蘅与白芷，《楚辞》二种香草，喻清芬。',quote:"扈江离与辟芷兮，纫秋兰以为佩。",src:"《楚辞·离骚》",meaning:"幽芳暗芷，洁己自香。",bz:"双草字头肖马大喜，疏燥土。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:4,音韵:4},note:"※ '蘅'19画偏繁。"},
+ {id:"zhi-lan",zi:"芝兰",full:"陈芝兰",py:"Chén Zhī-lán",tone:"²/¹/²",styles:["雅","文"],elems:["木","木"],strokes:[7,6,5],rare:5,term:'"芝兰"——灵芝与兰草，《孔子家语》"与善人居，如入芝兰之室"。',quote:"与善人居，如入芝兰之室，久而不闻其香，即与之化矣。",src:"《孔子家语·六本》",meaning:"芝兰有德，化人无声。",bz:"双草字头肖马食。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"chun-shen",zi:"春申",full:"陈春申",py:"Chén Chūn-shēn",tone:"²/¹/¹",styles:["阔","武"],elems:["木","金"],strokes:[7,9,5],rare:5,term:'"春申"——战国楚国春申君黄歇，四公子之一，亦上海别称。',quote:"春申君者，楚人也，名歇姓黄氏。",src:"《史记·春申君列传》",meaning:"春木生发，申金当立。",bz:"春属木气疏土；申合时柱庚申金。",dims:{命理:5,典籍:5,生肖:5,避讳:5,审美:4,音韵:4}},
+
+ /* 雅意/经典 (10) */
+ {id:"han-zhang",zi:"含章",full:"陈含章",py:"Chén Hán-zhāng",tone:"²/²/¹",styles:["文","雅"],elems:["金"],strokes:[7,7,11],rare:5,term:'"含章"——《周易·坤》"含章可贞"，内蕴文采而守正。',quote:"含章可贞，或从王事，无成有终。",src:"《周易·坤卦·六三》",meaning:"内含文章，守正有终。",bz:"章属金正气，含字口部沉静。",dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"yong-jiu",zi:"用九",full:"陈用九",py:"Chén Yòng-jiǔ",tone:"²/⁴/³",styles:["文","武"],elems:["水"],strokes:[7,5,2],rare:5,term:'"用九"——《周易·乾》"乾元用九，天下治也"。',quote:"用九，见群龙无首，吉。",src:"《周易·乾卦》",meaning:"群龙无首，刚柔并用。",bz:"九为阳数之极，亦水之老阴。",dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:4,音韵:4},note:"※ '九'数太极易识为绰号，慎选。"},
+ {id:"yuan-heng",zi:"元亨",full:"陈元亨",py:"Chén Yuán-hēng",tone:"²/²/¹",styles:["文","阔"],elems:["木"],strokes:[7,4,7],rare:5,term:'"元亨"——《周易·乾》"元亨利贞"四德之首二。',quote:"元亨利贞。",src:"《周易·乾卦·卦辞》",meaning:"元始亨通，万事皆吉。",bz:"元为木气始生，亨字通达。",dims:{命理:4,典籍:5,生肖:4,避讳:5,审美:4,音韵:5}},
+ {id:"shi-zhong",zi:"时中",full:"陈时中",py:"Chén Shí-zhōng",tone:"²/²/¹",styles:["文","雅"],elems:["金"],strokes:[7,7,4],rare:4,term:'"时中"——《中庸》"君子之中庸也，君子而时中"。',quote:"君子之中庸也，君子而时中；小人之中庸也，小人而无忌惮也。",src:"《中庸·第二章》",meaning:"应时守中，不偏不倚。",bz:"中字立轴正气。",dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:4,音韵:4},note:"※ 与台湾前防疫指挥官同名，知名度可能影响。"},
+ {id:"ming-qian",zi:"鸣谦",full:"陈鸣谦",py:"Chén Míng-qiān",tone:"²/²/¹",styles:["文","雅"],elems:["金"],strokes:[7,8,12],rare:5,term:'"鸣谦"——《周易·谦卦》"鸣谦，贞吉"，名声显而能谦。',quote:"鸣谦，贞吉。中心得也。",src:"《周易·谦卦·六二》",meaning:"名扬而谦，贞守得吉。",bz:"鸣(口+鸟)肖马喜，谦字言部。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:5,音韵:4}},
+ {id:"bu-qi",zi:"不器",full:"陈不器",py:"Chén Bù-qì",tone:"²/⁴/⁴",styles:["文","雅"],elems:["金"],strokes:[7,4,16],rare:5,term:'"不器"——《论语·为政》"君子不器"，喻才能广博不拘一用。',quote:"君子不器。",src:"《论语·为政》",meaning:"才广不拘，通才之器。",bz:"器字四口正方。",dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:4,音韵:3},note:"※ 双去声音调闷，朗读不顺；'不'字否定意需小心解释。"},
+ {id:"shi-xi",zi:"时习",full:"陈时习",py:"Chén Shí-xí",tone:"²/²/²",styles:["文","雅"],elems:["木"],strokes:[7,7,3],rare:5,term:'"时习"——《论语·学而》"学而时习之，不亦说乎"。',quote:"学而时习之，不亦说乎。",src:"《论语·学而》",meaning:"按时温习，不倦于学。",bz:"习字羽部肖马喜（披挂之纹）。",dims:{命理:3,典籍:5,生肖:5,避讳:5,审美:4,音韵:3},note:"※ 三阳平略平。"},
+ {id:"bao-pu",zi:"抱朴",full:"陈抱朴",py:"Chén Bào-pǔ",tone:"²/⁴/³",styles:["仙","文"],elems:["木"],strokes:[7,8,6],rare:5,term:'"抱朴"——《道德经》"见素抱朴，少私寡欲"，亦葛洪《抱朴子》。',quote:"见素抱朴，少私寡欲。",src:"《道德经·十九章》",meaning:"守朴归真，淡泊自处。",bz:"朴字木部疏燥土。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:5,音韵:4}},
+ {id:"jian-su",zi:"见素",full:"陈见素",py:"Chén Jiàn-sù",tone:"²/⁴/⁴",styles:["仙","文"],elems:["木"],strokes:[7,4,10],rare:5,term:'"见素"——同《道德经》"见素抱朴"，见本真之色。',quote:"见素抱朴，少私寡欲。",src:"《道德经·十九章》",meaning:"显其本真，不假雕饰。",bz:"素字纟部肖马喜（马辔），通水气。",dims:{命理:4,典籍:5,生肖:5,避讳:5,审美:5,音韵:3},note:"※ 双去声略闷。"},
+ {id:"yu-gui",zi:"与归",full:"陈与归",py:"Chén Yǔ-guī",tone:"²/³/¹",styles:["文","雅"],elems:["木"],strokes:[7,3,5],rare:5,term:'"与归"——《岳阳楼记》"微斯人，吾谁与归"，喻同道相期。',quote:"噫！微斯人，吾谁与归？",src:"范仲淹《岳阳楼记》",meaning:"志同道合，吾与谁归。",bz:"归字止部稳定。",dims:{命理:3,典籍:5,生肖:4,避讳:5,审美:5,音韵:4}}
 ];
 
 /* ========= 命理评分维度 + 默认权重 ========= */
