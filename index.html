@@ -167,7 +167,9 @@ details.weights summary::before{content:"⚙ ";color:var(--gold)}
 <span class="chip" data-filter="style" data-val="文">偏文</span>
 <span class="chip" data-filter="style" data-val="武">偏武</span>
 <span class="chip" data-filter="style" data-val="雅">清雅</span>
-<span class="chip" data-filter="style" data-val="阔">阔大</span>
+<span class="chip" data-filter="style" data-val="阔">偏阔</span>
+<span class="chip" data-filter="style" data-val="雅">清雅</span>
+<span class="chip" data-filter="style" data-val="仙">仙逸</span>
 <label style="margin-left:8px">补益</label>
 <span class="chip on" data-filter="elem" data-val="all">全部</span>
 <span class="chip" data-filter="elem" data-val="水">补水</span>
@@ -196,6 +198,11 @@ details.weights summary::before{content:"⚙ ";color:var(--gold)}
 <b>审美 ★★★★★</b><span>避开"梓轩浩宇"红海，识别度高，压舱感而无古板气。</span>
 </div>
 <p class="sans" style="margin-top:12px;font-size:.86em;color:var(--mute)">※ 你也可在上方"自定义评分"中调高你重视的维度，重排后看看自己的"心理首推"。</p>
+</div>
+
+<div class="bz-card" id="myShortlist" style="border:2px solid var(--gold);background:linear-gradient(135deg,rgba(184,137,58,.06),transparent)">
+<h3 style="margin-top:0">★ 我的候选 <span class="sans" style="color:var(--mute);font-weight:400;font-size:.82em">（收藏的名字与首推一同进入决选）</span></h3>
+<div id="shortlistBox" class="sans" style="font-size:.92em;color:var(--mute)">尚未收藏。点击任意名字右侧的 ★ 加入候选。</div>
 </div>
 
 <h2 id="rejected">三、否决名单（透明化）</h2>
@@ -357,7 +364,127 @@ const NAMES = [
   meaning:"踏地为陆，谦谨持重。",
   bz:"陆含阝(山阜)与水之高地义；通土而不燥。",
   dims:{命理:3,典籍:4,生肖:4,避讳:5,审美:4,音韵:4},
-  note:"※ '叔'字现代偏冷，仅作冷门备选。"}
+  note:"※ '叔'字现代偏冷，仅作冷门备选。"},
+
+ /* ============ 第三批 · 历史版本整合（已剔除违规）============ */
+ {id:"yun-zhou",zi:"云舟",full:"陈云舟",py:"Chén Yún-zhōu",tone:"²/²/¹",
+  styles:["雅","仙"],elems:["水","水"],strokes:[7,4,6],rare:4,
+  term:'"云舟"——以云为舟，仙家逍遥之喻，杜甫、苏轼诗中常见。',
+  quote:"扁舟一叶云水间，万里乘风觅旧山。",src:"陆游《云舟》",
+  meaning:"心若云舟，自在无碍。",
+  bz:"云属水气、舟行水上，双水补调候。",
+  dims:{命理:4,典籍:4,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"jing-lan",zi:"景澜",full:"陈景澜",py:"Chén Jǐng-lán",tone:"²/³/²",
+  styles:["阔","雅"],elems:["水"],strokes:[7,12,15],rare:4,
+  term:'"景澜"——大景之波澜，喻盛世气象、心潮澎湃。',
+  quote:"日月光华，弘于一人。景星庆云，澜翻波涌。",src:"《尚书大传》义化",
+  meaning:"日华映波，气象恢宏。",
+  bz:"澜含水气直补调候，景字光明。",
+  dims:{命理:4,典籍:3,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"ting-yuan",zi:"汀远",full:"陈汀远",py:"Chén Tīng-yuǎn",tone:"²/¹/³",
+  styles:["雅","仙"],elems:["水"],strokes:[7,5,7],rare:5,
+  term:'"汀"为水边平地，"远"为辽阔——白居易"汀远沙白鹭飞迟"之境。',
+  quote:"汀洲采白蘋，日落江南春。",src:"柳恽《江南曲》",
+  meaning:"伫立汀洲，目接天涯。",
+  bz:"汀含三点水补调候，远字辶部气脉绵长。",
+  dims:{命理:4,典籍:4,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"mu-chuan",zi:"沐川",full:"陈沐川",py:"Chén Mù-chuān",tone:"²/⁴/¹",
+  styles:["雅"],elems:["水","水"],strokes:[7,7,3],rare:4,
+  term:'"沐川"——沐于川流，《楚辞·渔父》"新沐者必弹冠"延义。',
+  quote:"新沐者必弹冠，新浴者必振衣。",src:"《楚辞·渔父》",
+  meaning:"濯川自洁，怀清守白。",
+  bz:"双水重润，沐有洗濯之意，破燥极佳。",
+  dims:{命理:5,典籍:4,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"hong-duo",zi:"泓铎",full:"陈泓铎",py:"Chén Hóng-duó",tone:"²/²/²",
+  styles:["雅","武"],elems:["水","金"],strokes:[7,8,10],rare:5,
+  term:'"泓"为深水之潭，"铎"为古代金铃——《论语》"天将以夫子为木铎"。',
+  quote:"天下之无道也久矣，天将以夫子为木铎。",src:"《论语·八佾》",
+  meaning:"深泓藏铎，鸣世警人。",
+  bz:"泓水+铎金，金水相生最契用神。",
+  dims:{命理:5,典籍:4,生肖:4,避讳:5,审美:4,音韵:3},
+  note:"※ 三字皆阳平，音调略平，朗读需顿挫。"},
+ {id:"ze-jun",zi:"泽钧",full:"陈泽钧",py:"Chén Zé-jūn",tone:"²/²/¹",
+  styles:["阔","雅"],elems:["水","金"],strokes:[7,8,9],rare:4,
+  term:'"泽"为水聚之地，"钧"为天地造化——"鸿钧"之钧、"陶钧"之钧。',
+  quote:"圣人作而万物睹，是谓鸿钧。",src:"《抱朴子·内篇》",
+  meaning:"得泽承钧，运化万物。",
+  bz:"泽水+钧金，金水相生应用神。",
+  dims:{命理:5,典籍:4,生肖:4,避讳:5,审美:4,音韵:5}},
+ {id:"run-heng",zi:"润珩",full:"陈润珩",py:"Chén Rùn-héng",tone:"²/⁴/²",
+  styles:["雅","文"],elems:["水"],strokes:[7,10,10],rare:5,
+  term:'"润"为温润，"珩"为佩玉之首——《国语》"楚之白珩"为楚国国宝。',
+  quote:"楚之白珩，犹在乎？",src:"《国语·楚语下》",
+  meaning:"温润如玉，珩冠君子。",
+  bz:"润字三点水补调候，珩为玉(土生金)助流通。",
+  dims:{命理:4,典籍:4,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"qing-heng",zi:"清衡",full:"陈清衡",py:"Chén Qīng-héng",tone:"²/¹/²",
+  styles:["文","雅"],elems:["水"],strokes:[7,11,16],rare:4,
+  term:'"清衡"——清正持衡，《荀子》"公正之谓清，权衡之谓平"。',
+  quote:"公平者，职之衡也；中和者，听之绳也。",src:"《荀子·王制》",
+  meaning:"清如止水，权衡有度。",
+  bz:"清字三点水补调候，衡字行字旁通水气。",
+  dims:{命理:4,典籍:4,生肖:4,避讳:5,审美:5,音韵:5}},
+ {id:"jing-yun",zi:"景沄",full:"陈景沄",py:"Chén Jǐng-yún",tone:"²/³/²",
+  styles:["雅","仙"],elems:["水"],strokes:[7,12,7],rare:5,
+  term:'"沄"为大水回旋之状，"景沄"喻盛景如水回环不尽。',
+  quote:"沄沄逝水，历古今而无穷。",src:"《文选·王褒·四子讲德论》",
+  meaning:"光景如水，回环无穷。",
+  bz:"沄字三点水补调候，景字光明。",
+  dims:{命理:4,典籍:3,生肖:4,避讳:5,审美:5,音韵:4}},
+ {id:"pei-ji",zi:"沛霁",full:"陈沛霁",py:"Chén Pèi-jì",tone:"²/⁴/⁴",
+  styles:["雅","文"],elems:["水","水"],strokes:[7,8,22],rare:5,
+  term:'"沛"为大雨滂沛，"霁"为雨止天开——王勃"虹销雨霁，彩彻区明"。',
+  quote:"虹销雨霁，彩彻区明。",src:"王勃《滕王阁序》",
+  meaning:"风雨之后，天清气朗。",
+  bz:"沛(氵)+霁(雨)双水极补，破燥首选。",
+  dims:{命理:5,典籍:5,生肖:4,避讳:5,审美:4,音韵:3},
+  note:"※ 双去声音调略闷；霁字22画偏繁。"},
+ {id:"pei-lin",zi:"沛霖",full:"陈沛霖",py:"Chén Pèi-lín",tone:"²/⁴/²",
+  styles:["雅"],elems:["水","水"],strokes:[7,8,16],rare:4,
+  term:'"沛霖"——久雨曰霖，沛霖即甘雨润万物。',
+  quote:"若济巨川，用汝作舟楫；若岁大旱，用汝作霖雨。",src:"《尚书·说命》",
+  meaning:"如霖润物，济世之才。",
+  bz:"沛+霖双水极补；唯霖含双木与父辈'林'同形需斟酌。",
+  dims:{命理:5,典籍:5,生肖:4,避讳:3,审美:4,音韵:5},
+  note:"※ '霖'下半为'林'，与父名'大林'形近，避讳分降。"},
+ {id:"qing-yan",zi:"清晏",full:"陈清晏",py:"Chén Qīng-yàn",tone:"²/¹/⁴",
+  styles:["文","雅"],elems:["水"],strokes:[7,11,10],rare:5,
+  term:'"清晏"——海清河晏，天下太平之象。',
+  quote:"海内清晏，无寇盗之警。",src:"《晋书·武帝纪》",
+  meaning:"清平如晏，世道安宁。",
+  bz:"清字三点水补调候；晏含日字虽稍犯火忌，但用作'安'义可受。",
+  dims:{命理:3,典籍:4,生肖:4,避讳:5,审美:5,音韵:5},
+  note:"※ '晏'含日(火)，调候分略低；取安宁义可接受。"},
+ {id:"jun-ze",zi:"钧泽",full:"陈钧泽",py:"Chén Jūn-zé",tone:"²/¹/²",
+  styles:["阔","武"],elems:["金","水"],strokes:[7,9,8],rare:4,
+  term:'"钧"为天地造化之器，"泽"为水聚之地，与"泽钧"同源异序。',
+  quote:"大钧无私力，万理自森著。",src:"陶渊明《神释》",
+  meaning:"承造化之钧，蓄江海之泽。",
+  bz:"钧金+泽水，金水相生。",
+  dims:{命理:5,典籍:4,生肖:4,避讳:5,审美:4,音韵:5}},
+ {id:"ming-che",zi:"铭澈",full:"陈铭澈",py:"Chén Míng-chè",tone:"²/²/⁴",
+  styles:["文","武"],elems:["金","水"],strokes:[7,11,15],rare:5,
+  term:'"铭澈"——铭刻清澈，金石之记+水之透明。',
+  quote:"铭，名也，述其功美，使可称名也。",src:"《释名·释言语》",
+  meaning:"铭心刻骨，澄澈如水。",
+  bz:"铭(钅)金+澈(氵)水，金水相生最契用神。",
+  dims:{命理:5,典籍:3,生肖:4,避讳:5,审美:5,音韵:4}},
+
+ /* ============ 第四批 · 用户指定 ============ */
+ {id:"an-zhou",zi:"安洲",full:"陈安洲",py:"Chén Ān-zhōu",tone:"²/¹/¹",
+  styles:["阔","雅"],elems:["水"],strokes:[7,6,9],rare:5,
+  term:'"安洲"——安立水中之陆，《楚辞·九歌》"洲渚"之境，喻立身之所。',
+  quote:"搴汀洲兮杜若，将以遗兮远者。",src:"《楚辞·九歌·湘夫人》",
+  meaning:"立洲而安，根固志远。",
+  bz:"洲字三点水+州(古为水中陆)双补水气；安字宀部静定。",
+  dims:{命理:4,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}},
+ {id:"jing-chuan",zi:"靖川",full:"陈靖川",py:"Chén Jìng-chuān",tone:"²/⁴/¹",
+  styles:["武","雅"],elems:["金","水"],strokes:[7,13,3],rare:5,
+  term:'"靖川"——平定江河，《左传》"靖共尔位"+《论语》"川流不息"合璧。',
+  quote:"逝者如斯夫，不舍昼夜。",src:"《论语·子罕》",
+  meaning:"靖以安川，川以载志——刚柔并济。",
+  bz:"靖字青+立属金气助决断；川字三笔水流补调候。",
+  dims:{命理:5,典籍:4,生肖:5,避讳:5,审美:5,音韵:5}}
 ];
 
 /* ========= 命理评分维度 + 默认权重 ========= */
@@ -398,6 +525,7 @@ function render(){
   totalEl.textContent=NAMES.length; totalEl2.textContent=NAMES.length;
   visEl.textContent=`显示 ${arr.length} / ${NAMES.length}`;
   emptyEl.style.display=arr.length?"none":"block";
+  renderShortlist();
   /* bind copy & fav */
   list.querySelectorAll(".copy").forEach(b=>b.onclick=e=>{
     const t=b.dataset.t;navigator.clipboard.writeText(t);b.textContent="✓";setTimeout(()=>b.textContent="复制",1500);e.stopPropagation();e.preventDefault();
@@ -473,5 +601,16 @@ document.querySelectorAll(`.chip[data-filter="style"]`).forEach(c=>c.classList.t
 document.querySelectorAll(`.chip[data-filter="elem"]`).forEach(c=>c.classList.toggle("on",c.dataset.val===state.elem));
 
 render();
+
+function renderShortlist(){
+  const box=document.getElementById("shortlistBox");
+  if(!box)return;
+  const favs=NAMES.filter(n=>state.favs[n.id]).map(n=>({...n,_score:score(n)})).sort((a,b)=>b._score-a._score);
+  if(!favs.length){box.innerHTML='尚未收藏。点击任意名字右侧的 ★ 加入候选。';return;}
+  box.innerHTML='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">'+
+    favs.map(n=>`<span style="background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:6px 12px;font-size:.92em;color:var(--accent);font-family:'Songti SC',serif"><b style="letter-spacing:.1em">${n.full}</b> <span class="sans" style="color:var(--gold);font-size:.85em">${n._score}分</span> <span style="cursor:pointer;color:var(--mute);margin-left:4px" onclick="state.favs['${n.id}']=false;save();render();">×</span></span>`).join('')+
+    '</div>'+
+    `<p class="sans" style="font-size:.84em;color:var(--mute);margin-top:10px">★ 共 ${favs.length} 个候选 · 与命理首推「陈长庚」一同进入最终决选 · <a href="javascript:document.getElementById('exportBtn').click()" style="color:var(--accent)">导出 TXT</a></p>`;
+}
 </script>
 </body></html>
