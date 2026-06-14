@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>陈氏麟儿命名录 · 修订版（乙卯日主）· 2026.06.10</title>
+<style>
+:root{--bg:#f5efe4;--paper:#faf5e9;--ink:#231f1a;--mute:#7a6f5f;--accent:#7a3b1f;--gold:#b8893a;--vermilion:#a8341d;--seal:#c44a2c;--line:#d8cbb3;--card:#fffdf6;--hl:#fff0d4;--water:#1565c0;--metal:#5a6070;--wood:#2e7d32;--fire:#c0392b;--earth:#a07020;}
+@media(prefers-color-scheme:dark){:root{--bg:#15110c;--paper:#1c1812;--ink:#ebe5d8;--mute:#9a907e;--accent:#d4a96a;--gold:#e0b574;--vermilion:#d96545;--line:#3a342c;--card:#23201b;--hl:#3a3220;}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Songti SC","STSong","Noto Serif CJK SC",serif;background:var(--bg);color:var(--ink);line-height:1.85;padding:28px 18px;max-width:980px;margin:0 auto}
+.sans{font-family:"PingFang SC",-apple-system,sans-serif}
+h1{font-size:1.95em;text-align:center;color:var(--accent);border-bottom:2px solid var(--gold);padding-bottom:14px;margin-bottom:6px;letter-spacing:.4em}
+.sub{text-align:center;color:var(--mute);font-size:.88em;margin-bottom:8px}
+.warn-banner{background:linear-gradient(135deg,rgba(168,52,29,.12),rgba(196,74,44,.05));border:1px solid var(--vermilion);border-radius:10px;padding:14px 18px;margin:16px 0;font-family:"PingFang SC",sans-serif;font-size:.92em}
+.warn-banner b{color:var(--vermilion)}
+h2{font-size:1.32em;color:var(--accent);margin:28px 0 12px;padding-left:12px;border-left:4px solid var(--gold);letter-spacing:.08em}
+h3{font-size:1.05em;color:var(--accent);margin:18px 0 8px;font-weight:600}
+.bz-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px}
+.tldr{background:linear-gradient(135deg,var(--hl),rgba(255,240,212,.4));border-left:4px solid var(--gold);padding:14px 18px;border-radius:0 10px 10px 0;margin:12px 0;font-family:"PingFang SC",sans-serif;font-size:.95em}
+.tldr b{color:var(--accent)}
+table.bz{width:100%;border-collapse:collapse;margin:14px 0;font-family:"PingFang SC",sans-serif;font-size:.92em}
+table.bz th,table.bz td{padding:9px 4px;text-align:center;border:1px solid var(--line)}
+table.bz th{background:rgba(184,137,58,.12);font-weight:600}
+table.bz td.lbl{background:rgba(184,137,58,.06);font-weight:600;width:64px}
+.dayMaster{background:rgba(46,125,50,.25)!important;font-weight:700;color:var(--wood)}
+.tag{display:inline-block;padding:2px 9px;border-radius:11px;background:rgba(184,137,58,.15);color:var(--accent);font-size:.82em;margin:2px 3px;font-family:"PingFang SC",sans-serif}
+.tag.warn{background:rgba(220,80,60,.12);color:var(--fire)}
+.tag.water{background:rgba(60,130,200,.14);color:var(--water)}
+.tag.metal{background:rgba(140,140,150,.18);color:var(--metal)}
+.tag.wood{background:rgba(80,160,80,.14);color:var(--wood)}
+.tag.fire{background:rgba(220,80,60,.12);color:var(--fire)}
+.tag.earth{background:rgba(180,140,60,.18);color:var(--earth)}
+.tag.tier-S{background:linear-gradient(135deg,#c44a2c,#a8341d);color:#fff;font-weight:600}
+.tag.tier-A{background:linear-gradient(135deg,#b8893a,#a37840);color:#fff}
+.tag.tier-B{background:rgba(184,137,58,.2);color:var(--accent)}
+
+.legend{font-family:"PingFang SC",sans-serif;font-size:.85em;color:var(--mute);background:rgba(184,137,58,.05);padding:10px 14px;border-radius:6px;margin:8px 0}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(245,239,228,.92);backdrop-filter:blur(10px);padding:12px 14px;margin:18px 0 12px;border-radius:12px;border:1px solid var(--line);font-family:"PingFang SC",sans-serif;font-size:.86em}
+@media(prefers-color-scheme:dark){.toolbar{background:rgba(28,24,18,.92)}}
+.tb-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tb-row label{color:var(--mute);font-size:.85em}
+.tb-row select,.tb-row .btn-mini{font-family:inherit;font-size:.85em;padding:5px 10px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip{padding:4px 11px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--mute);cursor:pointer;font-size:.82em;user-select:none}
+.chip.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+.tb-row .count{margin-left:auto;color:var(--mute);font-size:.82em}
+.search{flex:1;min-width:140px;max-width:240px;padding:5px 12px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:inherit;font-size:.86em}
+
+.namecard{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:box-shadow .2s}
+.namecard[open]{box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.namecard summary{padding:14px 18px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.namecard summary::-webkit-details-marker{display:none}
+.namecard summary::after{content:"▾";color:var(--gold);transition:transform .2s;margin-left:auto}
+.namecard[open] summary::after{transform:rotate(180deg)}
+.nc-name{font-size:1.3em;font-weight:600;color:var(--accent);letter-spacing:.18em}
+.nc-py{font-family:-apple-system,sans-serif;color:var(--mute);font-size:.78em}
+.nc-score{font-family:-apple-system,sans-serif;font-size:.85em;color:var(--gold);font-weight:600;background:rgba(184,137,58,.12);padding:3px 9px;border-radius:10px}
+.nc-fav{cursor:pointer;font-size:1.05em;color:var(--line);user-select:none;background:none;border:none}
+.nc-fav.on{color:var(--gold)}
+.nc-body{padding:6px 18px 18px;border-top:1px dashed var(--line)}
+.nc-body p{margin:8px 0;font-size:.93em}
+.nc-body strong{color:var(--accent)}
+.quote{background:rgba(184,137,58,.08);border-left:3px solid var(--gold);padding:10px 14px;margin:10px 0;font-style:italic;font-size:.9em;border-radius:0 6px 6px 0}
+.quote cite{display:block;text-align:right;color:var(--mute);font-style:normal;font-size:.82em;margin-top:4px}
+.recommend{background:linear-gradient(135deg,rgba(46,125,50,.12),rgba(60,130,200,.08));border:2px solid var(--wood);border-radius:14px;padding:24px;margin:28px 0}
+.recommend h2{border:none;padding:0;margin-bottom:12px;color:var(--wood)}
+.reason{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin-top:10px;font-size:.92em;font-family:"PingFang SC",sans-serif}
+.reason b{color:var(--accent);white-space:nowrap}
+.foot{text-align:center;color:var(--mute);font-size:.78em;margin-top:30px;padding:18px 0;border-top:1px solid var(--line);font-family:"PingFang SC",sans-serif}
+.copy{background:var(--gold);color:#fff;border:none;padding:3px 9px;border-radius:4px;cursor:pointer;font-size:.76em;font-family:"PingFang SC",sans-serif}
+.empty{text-align:center;padding:40px 20px;color:var(--mute);font-family:"PingFang SC",sans-serif}
+.toc-back{display:inline-block;margin:14px 0;font-size:.85em;color:var(--accent);text-decoration:none;font-family:"PingFang SC",sans-serif}
+.toc-back:hover{text-decoration:underline}
+@media(max-width:560px){h1{font-size:1.5em;letter-spacing:.2em}.nc-name{font-size:1.15em}.reason{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<h1>陈 氏 麟 儿 命 名 录 · 修 订 版</h1>
+<div class="sub">公历 2026.06.10 16:47 · 天津 · 真太阳时 16:39 · 第二版（已修正八字）</div>
+<a href="./" class="toc-back">← 返回旧版</a>
+
+<div class="warn-banner">
+<b>📌 修订声明：</b>原版 <code>index.html</code> 误将日柱排为"戊戌·庚申"，调候用神方向虽偶合但理由错误。本版以家长提供的命理软件排盘为准（<b>乙卯日 · 甲申时</b>），日主由"戊土"修正为"<b>乙木</b>"，全部分析与候选名重新生成。旧版页面保留以作对照，<b>请以本页为准</b>。
+</div>
+
+<h2 id="bazi">一、八字与五行总评（修订版）</h2>
+
+<div class="bz-card">
+
+<h3>① 一句话总评（白话）</h3>
+<div class="tldr">
+这孩子是<b>盛夏六月里一棵刚抽芽的乙木兰草</b>——根扎得深（卯木通根）、藤蔓也旺（年月时三透甲乙），但头顶的太阳（双午一丙伤官）烤得太狠，地里又见不到水。命名要做的事不是"缺什么补什么"——而是<b>找出这盘八字真正需要的"用神"</b>，让整个命局活起来。本案用神：<b>水（壬癸）为先、金（生水之源）为辅</b>，火与重土需避。
+</div>
+
+<h3>② 四柱排盘（以家长命盘截图为准）</h3>
+<table class="bz">
+<tr><th></th><th>年柱</th><th>月柱</th><th>日柱（本人）</th><th>时柱</th></tr>
+<tr><td class="lbl">主星</td><td>伤官</td><td>劫财</td><td>—（元男）</td><td>劫财</td></tr>
+<tr><td class="lbl">天干</td><td>丙(火)</td><td>甲(木)</td><td class="dayMaster">乙(木)</td><td>甲(木)</td></tr>
+<tr><td class="lbl">地支</td><td>午(火)</td><td>午(火)</td><td>卯(木)</td><td>申(金)</td></tr>
+<tr><td class="lbl">藏干</td><td>丁己</td><td>丁己</td><td>乙</td><td>庚壬戊</td></tr>
+<tr><td class="lbl">十神</td><td>食神·偏财</td><td>食神·偏财</td><td>比肩</td><td>正官·正印·正财</td></tr>
+</table>
+<div class="legend"><b>读法：</b>"元男"那一列是本人，日主<b style="color:var(--wood)">乙木</b>。生于午月（仲夏火当令），日支卯木通禄（自己的根扎得最稳的位置），年月时三干都是甲乙木——这叫"<b>身旺</b>"。</div>
+
+<h3>③ 关键原理：什么是"用神"，为什么不是"缺什么补什么"</h3>
+<p class="sans" style="font-size:.94em">
+你的家人说得对。"缺什么补什么"是民间俗解，真正的命理逻辑是：
+</p>
+<ol class="sans" style="font-size:.92em;padding-left:24px;line-height:2">
+<li><b>先看"格局"</b>——八字的主旋律是什么？本案月令午火 = 乙木的<b>食伤</b>，所以是"<b>木火伤官格</b>"。乙木把能量泄给丙丁火，化身为"才情、表达、灵气"——但泄得太狠就<b>枯萎</b>。</li>
+<li><b>再看"调候"</b>——夏天的乙木最怕什么？《穷通宝鉴·三夏乙木》明确说："五月乙木，<b>先用癸水</b>使滋润木气，次用丙火……若柱中无癸水则枯。"——本案丙火当头、癸水缺位，<b>调候首选水</b>。</li>
+<li><b>再看"通关"</b>——身旺乙木遇时柱申金（正官），木金相战。怎么办？<b>水</b>来通关——水克火（救乙木）、水生木（扶身）、水化金（金生水、水生木）。一字三用。</li>
+<li><b>所以本案"用神"</b>不是简单地补五行最弱的一项，而是经过<b>格局 → 调候 → 通关</b>三层推演，得出最能让命局"活起来"的字。</li>
+</ol>
+
+<h3>④ 用神判定（修订）</h3>
+<p class="sans" style="font-size:.93em;line-height:1.95">
+<b>身强弱：</b><span class="tag">身旺·伤官泄秀</span> · 乙木通根卯木 + 三比劫帮身<br>
+<b>调候用神（首选）：</b><span class="tag water">癸水（雨露）</span><span class="tag water">壬水（江河）</span> ——《穷通宝鉴》直点：夏木无癸则枯<br>
+<b>通关用神（次选）：</b><span class="tag water">水（金水通关）</span> —— 化解时柱申金克身、年月午火过泄<br>
+<b>辅助：</b><span class="tag metal">金（生水之源）</span> —— 但忌过重克身<br>
+<b>忌神：</b><span class="tag warn">火（再泄秀）</span><span class="tag warn">燥土（耗水）</span><span class="tag warn">重木（比劫争）</span>
+</p>
+<div class="legend">
+<b>命名翻译：</b>含 <b>水</b> 字根（氵雨冫川海江河霖瀚泽）= S 级；含<b>金水相生</b>意象（钅+氵 / 申字 / 雨金）= A 级；含<b>润燥之木/土</b>（艹木需配水）= B 级；含 <b>火/燥土/重木</b> 字根 = 扣分。
+</div>
+
+<h3>⑤ 与原版的关键差别</h3>
+<table class="bz" style="font-size:.88em">
+<tr><th>维度</th><th>原版（戊土日主）</th><th>修订版（乙木日主）</th></tr>
+<tr><td class="lbl">日主</td><td>戊土</td><td>乙木</td></tr>
+<tr><td class="lbl">格局</td><td>无明显格局</td><td>木火伤官格</td></tr>
+<tr><td class="lbl">调候用神</td><td>水（润燥土）</td><td>水（救焦木）— 同向，理由不同</td></tr>
+<tr><td class="lbl">金的角色</td><td>泄土生水（双赢）</td><td>正官生水（需通关，不可重）</td></tr>
+<tr><td class="lbl">原首推"陈长庚"</td><td>金叠金最佳</td><td><b>双金克乙身，不再首推</b></td></tr>
+</table>
+
+<h3>⑥ 生肖马·字根喜忌（同前）</h3>
+<p class="sans" style="font-size:.92em">
+<b>宜：</b><span class="tag wood">艹（草料）</span><span class="tag wood">木</span><span class="tag">目</span><span class="tag">纟</span><span class="tag">巾衣</span> &nbsp;
+<b>忌：</b><span class="tag warn">田</span><span class="tag warn">禾米</span><span class="tag warn">子(冲)</span><span class="tag warn">牛/丑</span>
+</p>
+
+<h3>⑦ 真太阳时校正（同前）</h3>
+<p class="sans" style="font-size:.86em;color:var(--mute)">天津东经117.2°，经度时差 (117.2-120)×4 ≈ -11min；2026/6/10 均时差 ≈ +1min；合计 16:47-10 ≈ <b>16:37</b>，仍属申时（15-17），时柱"甲申"不变。</p>
+</div>
+
+<h2 id="names">二、候选名（<span id="totalCount">—</span> 个 · 全部基于"用神"逻辑生成）</h2>
+
+<div class="bz-card">
+<h3>评级口径</h3>
+<p class="sans" style="font-size:.92em;line-height:1.9">
+<span class="tag tier-S">S 级</span>—— 用神字根直命（双水 / 水生木 / 雨露之象）<br>
+<span class="tag tier-A">A 级</span>—— 用神字根半命（单水 / 金水通关 / 木见水）<br>
+<span class="tag tier-B">B 级</span>—— 意象贴合（典籍润泽寓意，五行非直补）<br>
+每个名字给出：<b>用神契合</b>（核心论断）+ <b>专有名词出处</b> + <b>原文引用</b> + <b>整体寓意</b> + <b>音韵字形</b>。
+</p>
+</div>
+
+<div class="toolbar sans">
+<div class="tb-row">
+<input class="search" id="searchBox" placeholder="🔍 搜索字 / 出处 / 寓意…">
+<label>评级</label>
+<span class="chip on" data-filter="tier" data-val="all">全部</span>
+<span class="chip" data-filter="tier" data-val="S">S 级</span>
+<span class="chip" data-filter="tier" data-val="A">A 级</span>
+<span class="chip" data-filter="tier" data-val="B">B 级</span>
+<label style="margin-left:8px">排序</label>
+<select id="sortBy">
+<option value="tier-desc">评级 ↓</option>
+<option value="rare-desc">稀有度 ↓</option>
+<option value="default">默认（按章节）</option>
+</select>
+<span class="count" id="visibleCount"></span>
+</div>
+</div>
+
+<div id="nameList"></div>
+<div id="emptyHint" class="empty" style="display:none">没有符合条件的名字。</div>
+
+<div class="recommend" id="pick">
+<h2>★ 修订首推：陈观澜</h2>
+<p class="sans" style="font-size:1.05em">Chén Guānlán · 立潮头而见本源</p>
+<div class="reason">
+<b>用神 ★★★★★</b><span>"澜"含三点水+阑（水气满溢）直补调候首选；"观"目部清醒，乙木日主最忌枯泄，得水滋润、得目识源——一字救调候、一字解格局。</span>
+<b>典籍 ★★★★★</b><span>《孟子·尽心上》"观水有术，必观其澜"——直接以"水"为意象的儒门经典。</span>
+<b>音韵 ★★★★★</b><span>陈²观¹澜²，阳-阴-阳，开口-收口-开口，朗读最顺。</span>
+<b>避讳 ★★★★★</b><span>与"大林/珂/思/之"零冲突。</span>
+<b>生肖 ★★★★★</b><span>观字目部肖马所喜（耳目聪明）；澜字三点水（马近水草）。</span>
+<b>审美 ★★★★★</b><span>避开"梓轩浩宇"红海，士人风骨。</span>
+</div>
+<p class="sans" style="margin-top:12px;font-size:.86em;color:var(--mute)">※ 备选首推：陈长川（双水通流·乙木最佳生境）/ 陈濂溪（理学清誉·双水重润）。</p>
+</div>
+
+<div class="foot">
+共 <span id="totalCount2">—</span> 个候选 · 全部基于乙木日主用神逻辑 · 修订版 2026.06.14<br>
+命理推演仅供参考 · 真正的好命是父母给的爱与教养
+</div>
+
+<script>
+const NAMES = [
+/* ============ S级·双水/水生木 直命用神 (20) ============ */
+{id:"guan-lan",zi:"观澜",full:"陈观澜",py:"Chén Guān-lán",tone:"²/¹/²",tier:"S",rare:4,
+ useGod:'"澜"三点水+阑(水满)直补调候首选；"观"目部肖马所喜，水滋乙木、目识本源——救调候+解伤官泄秀双合。',
+ src:"《孟子·尽心上》",quote:"观水有术，必观其澜。日月有明，容光必照焉。",
+ meaning:"立潮头见本源，沉静中有锋芒。",
+ yyzx:"²/¹/² 阳阴阳·三声起伏完整·6+15画繁简对比"},
+{id:"chang-chuan",zi:"长川",full:"陈长川",py:"Chén Cháng-chuān",tone:"²/²/¹",tier:"S",rare:5,
+ useGod:'"川"为流水正字、补水第一；"长"舒展奔驰肖马大喜——双水通流，正应乙木需水滋养、需通关化金之象。',
+ src:"《诗经·小雅·小弁》",quote:"如彼泉流，无沦胥以亡。譬彼舟流，不知所届。",
+ meaning:"川流不息，志远而稳。",
+ yyzx:"²/²/¹ 二阳后阴平上扬·4+3画极简净"},
+{id:"han-quan",zi:"涵泉",full:"陈涵泉",py:"Chén Hán-quán",tone:"²/²/²",tier:"S",rare:5,
+ useGod:'"涵"三点水+包容象、"泉"水自地涌——双水包夹乙木根，《周易·蒙卦》"山下出泉"为蒙卦象，最合启蒙之木。',
+ src:"《周易·蒙卦·象传》",quote:"山下出泉，蒙。君子以果行育德。",
+ meaning:"涵泉养木，育德有方。",
+ yyzx:"²/²/² 三阳平略平·11+9画匀称（注：朗读需顿挫）"},
+{id:"zhe-quan",zi:"哲泉",full:"陈哲泉",py:"Chén Zhé-quán",tone:"²/²/²",tier:"S",rare:5,
+ useGod:'"哲"含口主言+折心通智；"泉"补水生乙——智慧如泉涌，乙木日主"伤官泄秀"得水化为"哲思"。',
+ src:"《诗经·大雅·瞻卬》",quote:"哲夫成城，哲妇倾城。",
+ meaning:"哲思如泉，源源不竭。",
+ yyzx:"²/²/² 三阳平略平·10+9画"},
+{id:"jian-yu",zi:"渐雨",full:"陈渐雨",py:"Chén Jiàn-yǔ",tone:"²/⁴/³",tier:"S",rare:5,
+ useGod:'"渐"三点水+《周易·渐卦》"鸿渐于陆"喻进取有序；"雨"直降甘霖——乙木遇渐雨，最契夏木枯渴。',
+ src:"《周易·渐卦·彖》",quote:"渐之进也，女归吉也。进得位，往有功也。",
+ meaning:"如雨渐润，进而有序。",
+ yyzx:"²/⁴/³ 阳去上·11+8画"},
+{id:"xi-meng",zi:"夕濛",full:"陈夕濛",py:"Chén Xī-méng",tone:"²/¹/²",tier:"S",rare:5,
+ useGod:'"濛"三点水+雨气朦胧；"夕"申时所属、与时柱呼应——傍晚水雾润焦木，正契16:47生时之象。',
+ src:"《诗经·豳风·东山》",quote:"我来自东，零雨其濛。",
+ meaning:"夕雨濛濛，归思绵长。",
+ yyzx:"²/¹/² 阳阴阳清越·3+17画对比强烈"},
+{id:"lin-yu",zi:"霖雨",full:"陈霖雨",py:"Chén Lín-yǔ",tone:"²/²/³",tier:"S",rare:5,
+ useGod:'《尚书·说命》"若岁大旱，用汝作霖雨"——夏木大旱遇霖雨，本案乙木最直接的命名意象，无可替代。',
+ src:"《尚书·说命上》",quote:"若济巨川，用汝作舟楫；若岁大旱，用汝作霖雨。",
+ meaning:"济世霖雨，兴邦之器。",
+ yyzx:"²/²/³ 阳阳上·16+8画（注：'霖'下含林，与父名'大林'形近，避讳分降）",
+ caveat:"※ 与父辈'林'字形近，列出供选不强荐。"},
+{id:"shu-shui",zi:"淑水",full:"陈淑水",py:"Chén Shū-shuǐ",tone:"²/¹/³",tier:"S",rare:5,
+ useGod:'"淑"三点水+叔（贤善）、"水"直字——双水救乙木夏渴，"淑"亦《诗经》"窈窕淑女"之德，男名古亦用之。',
+ src:"《诗经·周南·关雎》义化",quote:"参差荇菜，左右流之。窈窕淑女，寤寐求之。",
+ meaning:"清淑如水，温润有度。",
+ yyzx:"²/¹/³ 阳阴上·11+4画（注：'淑'今多女用，慎选）",
+ caveat:"※ '淑'字今多用于女名，男名可作冷门候选。"},
+{id:"fan-zhou",zi:"泛舟",full:"陈泛舟",py:"Chén Fàn-zhōu",tone:"²/⁴/¹",tier:"S",rare:5,
+ useGod:'"泛"三点水+舟行水上——双水之象，《诗经·邶风》"二子乘舟，泛泛其景"。',
+ src:"《诗经·邶风·二子乘舟》",quote:"二子乘舟，泛泛其景。",
+ meaning:"泛舟水上，从容自适。",
+ yyzx:"²/⁴/¹ 阳去阴·7+6画"},
+{id:"zhou-han",zi:"舟涵",full:"陈舟涵",py:"Chén Zhōu-hán",tone:"²/¹/²",tier:"S",rare:5,
+ useGod:'"舟"行水中、"涵"三点水包容——双水承木，乙木为舟、水为势，借时柱申金（古"申"通"伸"）伸展。',
+ src:"《尚书·说命》",quote:"若济巨川，用汝作舟楫。",
+ meaning:"载木浮川，涵养而行。",
+ yyzx:"²/¹/² 阳阴阳·6+11画"},
+{id:"chen-pu",zi:"沉璞",full:"陈沉璞",py:"Chén Chén-pú",tone:"²/²/²",tier:"A",rare:5,
+ useGod:'"沉"三点水补水、"璞"未琢之玉(土生金生水)——水中藏玉，乙木日主含华不露之象。',
+ src:"《韩非子·和氏》",quote:"楚人和氏得璞玉于楚山中⋯",
+ meaning:"沉璞蕴华，待时而出。",
+ yyzx:"²/²/² 三阳平·7+16画（注：与姓陈²叠音，可能朗读偏闷）",
+ caveat:"※ 'chén-chén' 姓+名首字同音，朗读不顺，列出供选。"},
+{id:"qing-xi",zi:"清溪",full:"陈清溪",py:"Chén Qīng-xī",tone:"²/¹/¹",tier:"S",rare:4,
+ useGod:'"清"+"溪"双三点水重润，《楚辞·九歌》"清溪之水"——乙木遇清溪如得活水。',
+ src:"周敦颐《爱莲说》义化 / 《楚辞·九歌》",quote:"濯清涟而不妖。",
+ meaning:"清溪映竹，淡泊以明。",
+ yyzx:"²/¹/¹ 阳阴阴·11+13画"},
+{id:"lian-xi",zi:"濂溪",full:"陈濂溪",py:"Chén Lián-xī",tone:"²/²/¹",tier:"S",rare:5,
+ useGod:'"濂"+"溪"双三点水极润；"濂溪"为周敦颐之号，理学开山祖师，《爱莲说》《太极图说》之主——乙木遇濂溪，文脉直续。',
+ src:"周敦颐《爱莲说》",quote:"予独爱莲之出淤泥而不染，濯清涟而不妖。",
+ meaning:"濂溪一脉，清华自远。",
+ yyzx:"²/²/¹ 阳阳阴·16+13画"},
+{id:"yu-zhi",zi:"雨之",full:"陈雨之",py:"Chén Yǔ-zhī",tone:"²/³/¹",tier:"S",rare:4,
+ useGod:'"雨"直降甘霖、"之"虚字主气——《周易·小畜》"密云不雨"反笔，本名取"雨已至"之吉。',
+ src:"《周易·小畜·彖》",quote:"密云不雨，自我西郊。施未行也。",
+ meaning:"雨润万物，时至而行。",
+ yyzx:"²/³/¹ 阳上阴·8+3画（注：'之'与父辈避讳字同音，避讳分降）",
+ caveat:"※ '之'与父辈'之'同音（如有此忌请避）。"},
+{id:"chun-lin",zi:"春霖",full:"陈春霖",py:"Chén Chūn-lín",tone:"²/¹/²",tier:"S",rare:5,
+ useGod:'"春"乙木所旺之时（虽与午月相违，名取意）+"霖"久雨——乙木最爱"春霖"，《尚书》"作霖雨"之器局。',
+ src:"《尚书·说命上》",quote:"若岁大旱，用汝作霖雨。",
+ meaning:"春霖润物，济世之才。",
+ yyzx:"²/¹/² 阳阴阳·9+16画",
+ caveat:"※ '霖'下含林，与父名'大林'形近，慎选。"},
+{id:"han-yi",zi:"涵漪",full:"陈涵漪",py:"Chén Hán-yī",tone:"²/²/¹",tier:"S",rare:5,
+ useGod:'"涵"+"漪"双三点水（漪含氵+猗）——水波涟漪、乙木浮叶，最契夏木遇水之美。',
+ src:"《诗经·魏风·伐檀》",quote:"河水清且涟猗。",
+ meaning:"水起涟漪，气定神闲。",
+ yyzx:"²/²/¹ 阳阳阴·11+14画"},
+{id:"shi-pei",zi:"时沛",full:"陈时沛",py:"Chén Shí-pèi",tone:"²/²/⁴",tier:"S",rare:5,
+ useGod:'"时雨"+"沛然"二典共构。"沛"三点水+市，《孟子》"沛然莫之能御"喻势如骤雨。',
+ src:"《孟子·梁惠王上》",quote:"天油然作云，沛然下雨，则苗浡然兴之矣。",
+ meaning:"应时沛雨，万物兴焉。",
+ yyzx:"²/²/⁴ 阳阳去·7+8画"},
+{id:"yu-ji",zi:"雨霁",full:"陈雨霁",py:"Chén Yǔ-jì",tone:"²/³/⁴",tier:"S",rare:5,
+ useGod:'"雨"+"霁"（雨止天开）——双雨字部首极润，王勃"虹销雨霁"佳境，乙木遇雨而后晴。',
+ src:"王勃《滕王阁序》",quote:"虹销雨霁，彩彻区明。",
+ meaning:"雨止天开，云收日朗。",
+ yyzx:"²/³/⁴ 阳上去·8+22画（注：霁字偏繁）"},
+{id:"lin-quan",zi:"林泉",full:"陈林泉",py:"Chén Lín-quán",tone:"²/²/²",tier:"A",rare:4,
+ useGod:'"林"双木+"泉"水——水木相生最契乙木日主；唯"林"与父名重，本案不强荐。',
+ src:"《庄子·齐物论》",quote:"山林与，皋壤与，使我欣欣然而乐与。",
+ meaning:"林下泉鸣，隐者之志。",
+ yyzx:"²/²/² 三阳平略平·8+9画",
+ caveat:"※ '林'与父名'大林'同字，原则上避讳，列出仅供观察。"},
+{id:"si-yuan",zi:"思源",full:"陈思源",py:"Chén Sī-yuán",tone:"²/¹/²",tier:"A",rare:4,
+ useGod:'"思"心部、"源"三点水+原——水之本源，乙木求其源之意。',
+ src:"《荀子·君道》",quote:"君者，民之原也。源清则流清。",
+ meaning:"饮水思源，本立道生。",
+ yyzx:"²/¹/² 阳阴阳·9+13画",
+ caveat:"※ '思'为父辈避讳字，原则上不选。列出说明。"},
+
+/* ============ A级·金水通关/水生木 (15) ============ */
+{id:"shen-han",zi:"申涵",full:"陈申涵",py:"Chén Shēn-hán",tone:"²/¹/²",tier:"A",rare:5,
+ useGod:'"申"应时柱申金（庚壬戊藏）+"涵"三点水通关——金生水、水生乙木，三层用神一字串通。',
+ src:"《周易·巽卦·象》",quote:"随风，巽。君子以申命行事。",
+ meaning:"申命行事，水承金气。",
+ yyzx:"²/¹/² 阳阴阳·5+11画"},
+{id:"qiu-yu",zi:"秋雨",full:"陈秋雨",py:"Chén Qiū-yǔ",tone:"²/¹/³",tier:"A",rare:4,
+ useGod:'"秋"为申金所属之季（申酉戌秋方）+"雨"水——金水相生，与时柱申金同气连枝。',
+ src:"杜牧《秋夕》义化",quote:"银烛秋光冷画屏，轻罗小扇扑流萤。",
+ meaning:"秋雨知凉，从容知机。",
+ yyzx:"²/¹/³ 阳阴上·9+8画",
+ caveat:"※ 与作家余秋雨同名，知名度可能影响。"},
+{id:"shen-mu",zi:"申牧",full:"陈申牧",py:"Chén Shēn-mù",tone:"²/¹/⁴",tier:"A",rare:5,
+ useGod:'"申"金应时柱+"牧"持鞭驾御——乙木需金正官有节制，方成栋梁；牧字含牛字旁需斟酌。',
+ src:"《尚书·尧典》",quote:"分命羲仲，宅嵎夷⋯⋯",
+ meaning:"申时立志，牧以驭才。",
+ yyzx:"²/¹/⁴ 阳阴去·5+8画",
+ caveat:"※ '牧'含牛字旁，与生肖马有'牛马难合'之忌，慎选。"},
+{id:"yan-zhou",zi:"兖州",full:"陈兖州",py:"Chén Yǎn-zhōu",tone:"²/³/¹",tier:"A",rare:5,
+ useGod:'"兖州"九州之一（位水东）、"州"古为水中陆——古地名雅称，金水通关意。',
+ src:"《尚书·禹贡》",quote:"济河惟兖州。九河既道，雷夏既泽。",
+ meaning:"立兖州之广，承水土之厚。",
+ yyzx:"²/³/¹ 阳上阴·8+6画"},
+{id:"qing-zhou",zi:"青州",full:"陈青州",py:"Chén Qīng-zhōu",tone:"²/¹/¹",tier:"A",rare:5,
+ useGod:'"青"乙木正色、"州"古水中陆——木色立水之地，乙木所栖之乡。',
+ src:"《尚书·禹贡》",quote:"海岱惟青州。",
+ meaning:"青木立洲，根固而广。",
+ yyzx:"²/¹/¹ 阳阴阴·8+6画"},
+{id:"lu-zhou",zi:"鹿洲",full:"陈鹿洲",py:"Chén Lù-zhōu",tone:"²/⁴/¹",tier:"A",rare:5,
+ useGod:'"鹿"草食生灵+"洲"三点水——乙木食于鹿洲，《诗经》"呦呦鹿鸣，食野之苹"。',
+ src:"《诗经·小雅·鹿鸣》",quote:"呦呦鹿鸣，食野之苹。",
+ meaning:"鹿鸣洲渚，雅集嘉宾。",
+ yyzx:"²/⁴/¹ 阳去阴·11+9画"},
+{id:"zhuo-yu",zi:"濯雨",full:"陈濯雨",py:"Chén Zhuó-yǔ",tone:"²/²/³",tier:"A",rare:5,
+ useGod:'"濯"三点水+翟（洗濯）+"雨"——双水洁身，《楚辞》"濯吾足"+《孟子》"濯缨"双典。',
+ src:"《楚辞·渔父》",quote:"沧浪之水清兮，可以濯吾缨。",
+ meaning:"濯缨于雨，洁身而立。",
+ yyzx:"²/²/³ 阳阳上·17+8画"},
+{id:"shu-rui",zi:"淑睿",full:"陈淑睿",py:"Chén Shū-ruì",tone:"²/¹/⁴",tier:"A",rare:5,
+ useGod:'"淑"三点水补水+"睿"目深而明——乙木伤官得水，化泄为智。',
+ src:"《尚书·洪范》",quote:"睿作圣，从作乂。",
+ meaning:"清淑而睿，水化为智。",
+ yyzx:"²/¹/⁴ 阳阴去·11+14画",
+ caveat:"※ '淑'字今多女用。"},
+{id:"shen-yi",zi:"申翼",full:"陈申翼",py:"Chén Shēn-yì",tone:"²/¹/⁴",tier:"A",rare:5,
+ useGod:'"申"金时柱+"翼"羽——申金为乙木正官，翼字羽部肖马所喜（披挂之纹），通鹏鸟之志。',
+ src:"《诗经·小雅·六月》",quote:"如轾如轩，四牡既佶。既佶且闲，薄伐玁狁，以奏肤公。",
+ meaning:"申以正命，翼以振飞。",
+ yyzx:"²/¹/⁴ 阳阴去·5+17画"},
+{id:"li-zhou",zi:"沥洲",full:"陈沥洲",py:"Chén Lì-zhōu",tone:"²/⁴/¹",tier:"A",rare:5,
+ useGod:'"沥"三点水+历（涓滴）+"洲"水中陆——双水之象，水流不绝。',
+ src:"韩愈《进学解》义化",quote:"焚膏油以继晷，恒兀兀以穷年。",
+ meaning:"沥水成洲，积渐而成。",
+ yyzx:"²/⁴/¹ 阳去阴·8+9画"},
+{id:"xuan-shen",zi:"玄申",full:"陈玄申",py:"Chén Xuán-shēn",tone:"²/²/¹",tier:"A",rare:5,
+ useGod:'"玄"水之古色（北方水）+"申"金时柱——金水通关之名，《道德经》玄之又玄。',
+ src:"《道德经·一章》",quote:"玄之又玄，众妙之门。",
+ meaning:"玄水申金，深而能远。",
+ yyzx:"²/²/¹ 阳阳阴·5+5画极简",
+ caveat:"※ '玄'字今多与玄学游戏关联，年轻一代解读受影响。"},
+{id:"shen-zhi",zi:"申之",full:"陈申之",py:"Chén Shēn-zhī",tone:"²/¹/¹",tier:"A",rare:5,
+ useGod:'"申"金时柱+"之"虚字——金气透时柱，虚字主气脉。',
+ src:"《周易·巽卦》",quote:"君子以申命行事。",
+ meaning:"申命而行，气脉自通。",
+ yyzx:"²/¹/¹ 阳阴阴·5+3画极简",
+ caveat:"※ '之'与父辈避讳字同音。"},
+{id:"yu-shu",zi:"雨墅",full:"陈雨墅",py:"Chén Yǔ-shù",tone:"²/³/⁴",tier:"A",rare:5,
+ useGod:'"雨"水+"墅"郊居（土字底但取野居意非燥土）——乙木归于雨墅，归隐之意。',
+ src:"王维《辋川集》义化",quote:"空山新雨后，天气晚来秋。",
+ meaning:"雨润幽墅，林泉之心。",
+ yyzx:"²/³/⁴ 阳上去·8+14画"},
+{id:"yu-meng",zi:"雨蒙",full:"陈雨蒙",py:"Chén Yǔ-méng",tone:"²/³/²",tier:"A",rare:5,
+ useGod:'"雨"水+"蒙"《周易·蒙卦》启蒙之象——卦象为山下出泉，乙木启蒙之名。',
+ src:"《周易·蒙卦》",quote:"蒙以养正，圣功也。",
+ meaning:"雨润蒙正，养德启慧。",
+ yyzx:"²/³/² 阳上阳·8+13画"},
+{id:"qing-zhi",zi:"青芷",full:"陈青芷",py:"Chén Qīng-zhǐ",tone:"²/¹/³",tier:"A",rare:5,
+ useGod:'"青"+"芷"双草字头肖马大喜+楚辞香草——乙木同类相和，需配水滋养（搭配水属用神效果更佳）。',
+ src:"《楚辞·离骚》",quote:"扈江离与辟芷兮，纫秋兰以为佩。",
+ meaning:"青芷幽芳，洁己不染。",
+ yyzx:"²/¹/³ 阳阴上·8+7画",
+ caveat:"※ 纯木未补水，B+级。"},
+
+/* ============ B级·意象贴合/雅意经典 (15) ============ */
+{id:"yi-zhe",zi:"益者",full:"陈益者",py:"Chén Yì-zhě",tone:"²/⁴/³",tier:"B",rare:5,
+ useGod:'"益"《周易·益卦》"利涉大川"——卦辞含"涉大川"水象；"者"虚字结构。',
+ src:"《周易·益卦》",quote:"益，利有攸往，利涉大川。",
+ meaning:"益人益己，涉川以成。",
+ yyzx:"²/⁴/³ 阳去上·10+8画",
+ caveat:"※ '者'字虚而结构怪，朗读如自指，慎选。"},
+{id:"jing-zhi",zi:"敬之",full:"陈敬之",py:"Chén Jìng-zhī",tone:"²/⁴/¹",tier:"B",rare:5,
+ useGod:'《诗经·周颂·敬之》篇名——周成王自警之诗，乙木需收敛。',
+ src:"《诗经·周颂·敬之》",quote:"敬之敬之，天维显思。",
+ meaning:"敬以持身，慎而能远。",
+ yyzx:"²/⁴/¹ 阳去阴·12+3画",
+ caveat:"※ '之'同音父辈避讳字。"},
+{id:"sheng-min",zi:"生民",full:"陈生民",py:"Chén Shēng-mín",tone:"²/¹/²",tier:"B",rare:5,
+ useGod:'《诗经·大雅·生民》篇名——周人始祖后稷之歌，乙木为草木之始，呼应"生民"。',
+ src:"《诗经·大雅·生民》",quote:"厥初生民，时维姜嫄。",
+ meaning:"生民之始，木德先行。",
+ yyzx:"²/¹/² 阳阴阳·5+5画"},
+{id:"jing-fu",zi:"景福",full:"陈景福",py:"Chén Jǐng-fú",tone:"²/³/²",tier:"B",rare:4,
+ useGod:'《诗经·小雅·小明》"介尔景福"——大福，光明而厚。',
+ src:"《诗经·小雅·小明》",quote:"神之听之，介尔景福。",
+ meaning:"承神所佑，景福绵长。",
+ yyzx:"²/³/² 阳上阳·12+13画",
+ caveat:"※ '景'含日(火)，违忌神，B级。"},
+{id:"zai-de",zi:"载德",full:"陈载德",py:"Chén Zài-dé",tone:"²/⁴/²",tier:"B",rare:5,
+ useGod:'《诗经·大雅·下武》"载德不忘"——德如水之载舟。',
+ src:"《诗经·大雅·下武》",quote:"昭兹来许，绳其祖武。永言孝思，昭哉嗣服。",
+ meaning:"载德传家，水以载舟。",
+ yyzx:"²/⁴/² 阳去阳·10+15画"},
+{id:"qing-yan",zi:"清严",full:"陈清严",py:"Chén Qīng-yán",tone:"²/¹/²",tier:"A",rare:5,
+ useGod:'"清"三点水补水+"严"持守——乙木需清水以解伤官泄秀，需严以收敛劫财。',
+ src:"《诗经·商颂·殷武》义化",quote:"商邑翼翼，四方之极。",
+ meaning:"清严持身，水以为本。",
+ yyzx:"²/¹/² 阳阴阳·11+7画"},
+{id:"hong-zhao",zi:"宏肇",full:"陈宏肇",py:"Chén Hóng-zhào",tone:"²/²/⁴",tier:"B",rare:5,
+ useGod:'《尚书·君奭》"宏兹贲，不忘王休"——开创之意，乙木有发展之机。',
+ src:"《尚书·君奭》",quote:"在昔成汤既受命，时则有若伊尹⋯⋯",
+ meaning:"宏图肇始，木有所立。",
+ yyzx:"²/²/⁴ 阳阳去·7+14画"},
+{id:"yi-an",zi:"易安",full:"陈易安",py:"Chén Yì-ān",tone:"²/⁴/¹",tier:"B",rare:5,
+ useGod:'《周易·系辞》"君子安其身而后动"+李清照号易安居士——立身有道。',
+ src:"《周易·系辞下》",quote:"君子安其身而后动，易其心而后语。",
+ meaning:"安身而立，易心而言。",
+ yyzx:"²/⁴/¹ 阳去阴·8+6画",
+ caveat:"※ 与李清照号同，性别识别度可能受影响。"},
+{id:"zhi-yu",zi:"知雩",full:"陈知雩",py:"Chén Zhī-yú",tone:"²/¹/²",tier:"A",rare:5,
+ useGod:'"雩"求雨之祭+《论语·先进》"风乎舞雩"——曾点之志，雨字头补水。',
+ src:"《论语·先进》",quote:"浴乎沂，风乎舞雩，咏而归。",
+ meaning:"风乎舞雩，知机而乐。",
+ yyzx:"²/¹/² 阳阴阳·8+11画",
+ caveat:"※ '雩'字生僻，使用门槛较高。"},
+{id:"yan-zhi",zi:"言之",full:"陈言之",py:"Chén Yán-zhī",tone:"²/²/¹",tier:"B",rare:5,
+ useGod:'《论语》"君子欲讷于言而敏于行"反笔——言而有信。',
+ src:"《论语·里仁》",quote:"君子欲讷于言而敏于行。",
+ meaning:"言而有信，敏而行之。",
+ yyzx:"²/²/¹ 阳阳阴·7+3画",
+ caveat:"※ '之'同音父辈避讳字。"},
+{id:"chong-xuan",zi:"冲玄",full:"陈冲玄",py:"Chén Chōng-xuán",tone:"²/¹/²",tier:"A",rare:5,
+ useGod:'"冲"两点水（冰部，仍属水）+"玄"水之古色——双水古意，《道德经》"道冲而用之"。',
+ src:"《道德经·四章》",quote:"道冲，而用之或不盈。渊兮，似万物之宗。",
+ meaning:"道冲玄渊，万物之宗。",
+ yyzx:"²/¹/² 阳阴阳·6+5画极简"},
+{id:"zhi-zhe",zi:"知者",full:"陈知者",py:"Chén Zhī-zhě",tone:"²/¹/³",tier:"B",rare:5,
+ useGod:'《论语·雍也》"知者乐水，仁者乐山"——直点用神"水"。',
+ src:"《论语·雍也》",quote:"知者乐水，仁者乐山。知者动，仁者静。",
+ meaning:"知者乐水，乙木所宗。",
+ yyzx:"²/¹/³ 阳阴上·8+8画",
+ caveat:"※ '者'字结构怪，朗读如自指。"},
+{id:"jian-yang",zi:"渐扬",full:"陈渐扬",py:"Chén Jiàn-yáng",tone:"²/⁴/²",tier:"A",rare:5,
+ useGod:'"渐"三点水+《周易·渐卦》+"扬"舒展——水生木而扬，乙木得水而蔓发。',
+ src:"《周易·渐卦》",quote:"鸿渐于陆，其羽可用为仪。",
+ meaning:"渐进而扬，蔓发有节。",
+ yyzx:"²/⁴/² 阳去阳·11+6画"},
+{id:"han-zhang",zi:"翰章",full:"陈翰章",py:"Chén Hàn-zhāng",tone:"²/⁴/¹",tier:"A",rare:5,
+ useGod:'"翰"羽部清逸（古亦谓"长毛笔"水墨之器）+"章"成文——乙木伤官得水，化泄为文章。',
+ src:"《诗经·大雅·崧高》",quote:"维申及甫，维周之翰。",
+ meaning:"翰墨成章，文采斐然。",
+ yyzx:"²/⁴/¹ 阳去阴·16+11画"},
+{id:"zhi-cheng",zi:"知诚",full:"陈知诚",py:"Chén Zhī-chéng",tone:"²/¹/²",tier:"B",rare:5,
+ useGod:'《中庸》"诚者，天之道也"+"知"明——明而能诚，乙木伤官需诚以正泄。',
+ src:"《中庸·二十章》",quote:"诚者，天之道也；诚之者，人之道也。",
+ meaning:"知而能诚，泄秀而正。",
+ yyzx:"²/¹/² 阳阴阳·8+13画"},
+
+/* ============ S/A 补充·乙木专属 (5) ============ */
+{id:"xi-xin",zi:"洗心",full:"陈洗心",py:"Chén Xǐ-xīn",tone:"²/³/¹",tier:"S",rare:5,
+ useGod:'《周易·系辞》"圣人以此洗心"——三点水洗除心垢，乙木日主修身正用神。',
+ src:"《周易·系辞上》",quote:"圣人以此洗心，退藏于密。",
+ meaning:"洗心退藏，密而能远。",
+ yyzx:"²/³/¹ 阳上阴·9+4画"},
+{id:"shu-zhi",zi:"舒之",full:"陈舒之",py:"Chén Shū-zhī",tone:"²/¹/¹",tier:"A",rare:5,
+ useGod:'"舒"舍+予（伸展）——乙木藤蔓所好，《诗经·陈风》"君子之远如此"延展义。',
+ src:"《诗经·陈风·月出》",quote:"舒窈纠兮，劳心悄兮。",
+ meaning:"舒展自得，从容而行。",
+ yyzx:"²/¹/¹ 阳阴阴·12+3画",
+ caveat:"※ '之'同音父辈避讳字。"},
+{id:"zhi-zhou",zi:"芷洲",full:"陈芷洲",py:"Chén Zhǐ-zhōu",tone:"²/³/¹",tier:"A",rare:5,
+ useGod:'"芷"草字头肖马食+"洲"三点水——草遇水而生，《楚辞》"沅有芷兮澧有兰"。',
+ src:"《楚辞·九歌·湘夫人》",quote:"沅有芷兮澧有兰，思公子兮未敢言。",
+ meaning:"芷生洲渚，幽芳自远。",
+ yyzx:"²/³/¹ 阳上阴·7+9画"},
+{id:"qing-yi",zi:"清漪",full:"陈清漪",py:"Chén Qīng-yī",tone:"²/¹/¹",tier:"S",rare:5,
+ useGod:'"清"+"漪"双三点水——水波涟漪、清而能美，《诗经》"河水清且涟猗"。',
+ src:"《诗经·魏风·伐檀》",quote:"河水清且涟猗。",
+ meaning:"水清而漪，气清而润。",
+ yyzx:"²/¹/¹ 阳阴阴·11+14画"},
+{id:"yu-mu",zi:"渝穆",full:"陈渝穆",py:"Chén Yú-mù",tone:"²/²/⁴",tier:"A",rare:5,
+ useGod:'"渝"三点水+谕（变而不渝）+"穆"和敬——水德不渝，《诗经》"穆如清风"之美。',
+ src:"《诗经·大雅·烝民》",quote:"吉甫作诵，穆如清风。仲山甫永怀，以慰其心。",
+ meaning:"志不渝、性穆和。",
+ yyzx:"²/²/⁴ 阳阳去·12+16画"}
+];
+
+/* ========= 渲染逻辑 ========= */
+const list=document.getElementById("nameList");
+const totalEl=document.getElementById("totalCount"), totalEl2=document.getElementById("totalCount2");
+const visEl=document.getElementById("visibleCount"), emptyEl=document.getElementById("emptyHint");
+const TIER_RANK={S:3,A:2,B:1};
+
+let curTier="all", curSort="tier-desc", curQuery="";
+
+function render(){
+  let arr=NAMES.slice();
+  if(curTier!=="all") arr=arr.filter(n=>n.tier===curTier);
+  if(curQuery){
+    const q=curQuery.toLowerCase();
+    arr=arr.filter(n=>(n.full+n.py+n.useGod+n.src+n.quote+n.meaning).toLowerCase().includes(q));
+  }
+  if(curSort==="tier-desc") arr.sort((a,b)=>(TIER_RANK[b.tier]||0)-(TIER_RANK[a.tier]||0)||b.rare-a.rare);
+  else if(curSort==="rare-desc") arr.sort((a,b)=>b.rare-a.rare);
+  list.innerHTML=arr.map(cardHtml).join("");
+  totalEl.textContent=NAMES.length; totalEl2.textContent=NAMES.length;
+  visEl.textContent=`显示 ${arr.length} / ${NAMES.length}`;
+  emptyEl.style.display=arr.length?"none":"block";
+  list.querySelectorAll(".copy").forEach(b=>b.onclick=e=>{
+    navigator.clipboard.writeText(b.dataset.t);b.textContent="✓";setTimeout(()=>b.textContent="复制",1500);e.stopPropagation();e.preventDefault();
+  });
+}
+function cardHtml(n){
+  const cav=n.caveat?`<p style="color:var(--vermilion);font-size:.86em" class="sans">${n.caveat}</p>`:"";
+  return `<details class="namecard">
+<summary>
+  <span class="nc-name">${n.full}</span>
+  <span class="nc-py">${n.py} (${n.tone})</span>
+  <span class="tag tier-${n.tier}">${n.tier} 级</span>
+  <span class="nc-score">稀 ${"★".repeat(n.rare)}</span>
+  <button class="copy" data-t="${n.full} ${n.py}">复制</button>
+</summary>
+<div class="nc-body">
+<p><strong>用神契合：</strong>${n.useGod}</p>
+<div class="quote">${n.quote}<cite>——${n.src}</cite></div>
+<p><strong>整体寓意：</strong>${n.meaning}</p>
+<p class="sans" style="font-size:.85em;color:var(--mute)">音韵字形：${n.yyzx}</p>
+${cav}
+</div>
+</details>`;
+}
+
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));
+  c.classList.add("on"); curTier=c.dataset.val; render();
+});
+document.getElementById("sortBy").onchange=e=>{curSort=e.target.value;render();};
+document.getElementById("searchBox").oninput=e=>{curQuery=e.target.value;render();};
+
+render();
+</script>
+
+</body>
+</html>
